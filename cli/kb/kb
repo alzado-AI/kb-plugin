@@ -1,0 +1,14 @@
+#!/usr/bin/env python3.13
+"""KB CLI wrapper — sets up Python path and runs the CLI."""
+
+import sys
+from pathlib import Path
+
+# Add parent of kb/ to path so 'from kb.xxx' imports work
+tools_dir = str(Path(__file__).resolve().parent.parent)
+if tools_dir not in sys.path:
+    sys.path.insert(0, tools_dir)
+
+from kb.cli import app
+
+app()

@@ -6,7 +6,7 @@ Plugin oficial de la plataforma Knowledge Base (KB). Entrega skills, sub-agentes
 
 - **~80 skills** — workshops (`/kb:program`, `/kb:project`, `/kb:batman`), navegación (`/kb:pendientes`, `/kb:clientes`, `/kb:calendario`), generación (`/kb:memo`, `/kb:presentacion`, `/kb:reporte`), y más
 - **~50 sub-agentes** — `doc-writer`, `meeting-parser`, `issue-writer`, `browser-navigator`, etc. Claude los invoca automáticamente según tarea
-- El CLI `kb` se instala aparte via `pip install kb-cli` (ver abajo)
+- El CLI `kb` vive en `cli/` de este mismo repo — se instala con `pip install git+https://...` (ver abajo)
 
 ## Instalación
 
@@ -14,7 +14,7 @@ Plugin oficial de la plataforma Knowledge Base (KB). Entrega skills, sub-agentes
 
 En Claude Code o Cowork:
 ```
-/plugin marketplace add https://core.dominio.org/api/v1/plugin/marketplace.json
+/plugin marketplace add alzado-AI/kb-plugin
 ```
 
 ### 2. Instalar el plugin
@@ -29,10 +29,15 @@ Claude Code copiará skills + agents a `~/.claude/plugins/cache/kb/`.
 
 Aparte, en tu terminal:
 ```bash
-pip install kb-cli
+pip install "git+https://github.com/alzado-AI/kb-plugin.git#subdirectory=cli"
 ```
 
-Verificación: `kb --version` debe responder.
+Verificación: `kb --help` debe responder con los subcomandos (`auth`, `search`, `doc`, etc.).
+
+Actualizaciones futuras del CLI salen con cada release del plugin — corré el mismo comando con `--upgrade`:
+```bash
+pip install --upgrade "git+https://github.com/alzado-AI/kb-plugin.git#subdirectory=cli"
+```
 
 ### 4. Autenticarte
 
