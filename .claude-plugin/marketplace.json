@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Alzado AI plugin marketplace \u2014 Knowledge Base platform for Claude Code + Cowork",
-    "version": "0.1.2"
+    "version": "0.1.3"
   },
   "plugins": [
     {
       "name": "kb",
       "source": "./plugins/kb",
       "description": "Knowledge Base platform \u2014 skills, sub-agents, and kb CLI for Claude Code + Cowork",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "category": "productivity",
       "tags": [
         "kb",

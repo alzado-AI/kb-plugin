@@ -27,16 +27,21 @@ Claude Code copiará skills + agents a `~/.claude/plugins/cache/kb/`.
 
 ### 3. Instalar el CLI `kb`
 
-Aparte, en tu terminal:
+Desde PyPI (ruta principal):
 ```bash
-pip install "git+https://github.com/alzado-AI/kb-plugin.git#subdirectory=cli"
+pip install alzadi-kb
+```
+
+Alternativa directa al repo (útil para pre-releases o pinear a un tag específico):
+```bash
+pip install "git+https://github.com/alzado-AI/kb-plugin.git@v0.1.3#subdirectory=cli"
 ```
 
 Verificación: `kb --help` debe responder con los subcomandos (`auth`, `search`, `doc`, etc.).
 
-Actualizaciones futuras del CLI salen con cada release del plugin — corré el mismo comando con `--upgrade`:
+Upgrade:
 ```bash
-pip install --upgrade "git+https://github.com/alzado-AI/kb-plugin.git#subdirectory=cli"
+pip install --upgrade alzadi-kb
 ```
 
 ### 4. Autenticarte

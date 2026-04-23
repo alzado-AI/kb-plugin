@@ -1,6 +1,6 @@
 {
   "name": "kb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Knowledge Base platform \u2014 skills, sub-agents, and the kb CLI for Claude Code + Cowork",
   "author": {
     "name": "Alzado AI",
