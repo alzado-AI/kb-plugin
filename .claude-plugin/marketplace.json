@@ -1,0 +1,21 @@
+{
+  "name": "alzado-kb",
+  "owner": {
+    "name": "Alzado AI",
+    "url": "https://github.com/alzado-AI"
+  },
+  "metadata": {
+    "description": "Alzado AI plugin marketplace — Knowledge Base platform for Claude Code + Cowork",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "kb",
+      "source": "./plugins/kb",
+      "description": "Knowledge Base platform — skills, sub-agents, and kb CLI for Claude Code + Cowork",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["kb", "workshop", "pm", "knowledge-base"]
+    }
+  ]
+}
