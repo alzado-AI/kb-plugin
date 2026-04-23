@@ -1,7 +1,7 @@
 ---
 name: batman
 domain: pm
-description: "Workshop BATMAN: fix rapido end-to-end desde issue. Estaciones: issue, analisis, dev, publicar. Acepta issue ID o descripcion: /batman 3, /batman fix regex rut receivables."
+description: "Workshop BATMAN: fix rapido end-to-end desde issue. Estaciones: issue, analisis, dev, publicar. Acepta issue ID o descripcion: /kb:batman 3, /kb:batman fix regex rut receivables."
 disable-model-invocation: false
 ---
 
@@ -10,17 +10,17 @@ Eres el **workshop Batman** del producto. Tu rol es ejecutar fixes rapidos end-t
 **Contexto organizacional antes de implementar.** Antes de tocar codigo, cargar `kb org-context --module {modulo-del-issue} --query "{titulo del issue}" --format prompt`. Si el fix toca comportamiento cubierto por una `BusinessRule` activa, **NO romper la regla** sin discutirlo — citar la regla en el PR description con `[rule:slug]` y, si es necesario cambiarla, abrir `Conflict` via `kb conflict` antes del merge. Esto evita que un fix rapido contradiga reglas de negocio sin que nadie se entere.
 
 **Contexto taxonomico:** Este es uno de 4 workshops del sistema (+ 1 workflow):
-- `/analiza` → TRIAJE (workflow: challengear, investigar, diagnosticar, derivar)
-- `/estrategia` → DIRECCION (outcomes, portfolio, capacidad)
-- `/program` → EXPLORACION (oportunidad → discovery → reduccion de riesgo)
-- `/project` → EJECUCION (solucion concreta → prototipo → diseno → dev → deploy)
-- **`/batman` → FIX RAPIDO (issue → codigo → PR)**
+- `/kb:analiza` → TRIAJE (workflow: challengear, investigar, diagnosticar, derivar)
+- `/kb:estrategia` → DIRECCION (outcomes, portfolio, capacidad)
+- `/kb:program` → EXPLORACION (oportunidad → discovery → reduccion de riesgo)
+- `/kb:project` → EJECUCION (solucion concreta → prototipo → diseno → dev → deploy)
+- **`/kb:batman` → FIX RAPIDO (issue → codigo → PR)**
 
 **Providers:** Ver `.claude/agents/shared/provider-resolution.md`. Capabilities: project-tracker.
 
-**Cuando usar /batman vs /project:**
-- `/batman`: Bug, fix puntual, mejora acotada. No necesita discovery ni documentacion. Un issue, un PR.
-- `/project`: Solucion concreta que necesita discovery, documentacion, posiblemente prototipo y diseno. Multiples issues.
+**Cuando usar /kb:batman vs /kb:project:**
+- `/kb:batman`: Bug, fix puntual, mejora acotada. No necesita discovery ni documentacion. Un issue, un PR.
+- `/kb:project`: Solucion concreta que necesita discovery, documentacion, posiblemente prototipo y diseno. Multiples issues.
 
 ## MODELO DE NAVEGACION: ESTACIONES
 
@@ -56,9 +56,9 @@ kb issue resolve {ID}
 
 `$ARGUMENTS` puede ser:
 
-1. **Issue ID** (ej: `/batman 3`): Leer issue directo → ir a ISSUE
-2. **Descripcion + modulo** (ej: `/batman fix regex rut receivables`): Buscar issue existente o crear uno → ir a ISSUE
-3. **Vacio** (`/batman` solo): Preguntar "Que quieres fixear?"
+1. **Issue ID** (ej: `/kb:batman 3`): Leer issue directo → ir a ISSUE
+2. **Descripcion + modulo** (ej: `/kb:batman fix regex rut receivables`): Buscar issue existente o crear uno → ir a ISSUE
+3. **Vacio** (`/kb:batman` solo): Preguntar "Que quieres fixear?"
 
 ### Paso 1: Resolver issue
 
@@ -374,7 +374,7 @@ Al finalizar, aplicar la regla de Propagacion de Completitud (ver CLAUDE.md): co
 | Sin issue en tracker | Trabajar solo con issue KB — no es obligatorio |
 | Repo desconocido | Preguntar al usuario |
 | Tests no existen en el repo | Continuar sin tests, notar en review |
-| Fix requiere mas discovery | Sugerir escalar a `/project` |
+| Fix requiere mas discovery | Sugerir escalar a `/kb:project` |
 | Fix toca multiples repos | Secuencial: un PR por repo |
 | Usuario quiere solo documentar, no fixear | Perfeccionar issue en el project-tracker (analisis + enriquecer issue) y resolver issue como documentado. No entrar a DEV. |
 

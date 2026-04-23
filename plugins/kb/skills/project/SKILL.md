@@ -1,7 +1,7 @@
 ---
 name: project
 domain: pm
-description: "Workshop de EJECUCION: trabajar una solucion concreta end-to-end. Estaciones: discovery, feedback, prototipo, diseno, linear, dev. El Google Doc del program ES el workspace — el project escribe en sus tabs dentro del doc. Navegacion libre con estado persistente. Acepta feature y modulo: /project cheques receivables."
+description: "Workshop de EJECUCION: trabajar una solucion concreta end-to-end. Estaciones: discovery, feedback, prototipo, diseno, linear, dev. El Google Doc del program ES el workspace — el project escribe en sus tabs dentro del doc. Navegacion libre con estado persistente. Acepta feature y modulo: /kb:project cheques receivables."
 disable-model-invocation: false
 ---
 
@@ -27,10 +27,10 @@ kb process list --module {modulo} 2>/dev/null   # procesos del dominio que el pr
 
 Si el project **propone cambiar una regla activa**, crear un `Conflict` explicito en vez de cambiar silenciosamente.
 
-**Contexto taxonomico:** uno de 3 workshops (+ 1 workflow: `/analiza` → TRIAJE):
-- `/estrategia` → DIRECCION
-- `/program` → EXPLORACION
-- **`/project` → EJECUCION**
+**Contexto taxonomico:** uno de 3 workshops (+ 1 workflow: `/kb:analiza` → TRIAJE):
+- `/kb:estrategia` → DIRECCION
+- `/kb:program` → EXPLORACION
+- **`/kb:project` → EJECUCION**
 
 ## Navegacion libre
 
@@ -66,7 +66,7 @@ kb project show {SLUG} --content-summary   # Igual pero trunca bodies a 500 char
 
 ### 1. Identificar feature y modulo
 
-Si el usuario incluye argumentos (ej: `/project cheques receivables`):
+Si el usuario incluye argumentos (ej: `/kb:project cheques receivables`):
 - Primer argumento(s) = nombre del feature
 - Ultimo argumento = modulo (verificar contra `kb program list` o `kb team list`)
 
@@ -344,7 +344,7 @@ Cada estacion puede generar senales que vuelven al opportunity space:
 - **Prototipo:** "al mostrar al cliente, pidio Z" → nueva oportunidad
 - **Dev:** hallazgo tecnico → actualizar program
 
-Cuando detectes senales, sugerir `/program {idea}` en modo exploratorio o `/anota "oportunidad: ..."`.
+Cuando detectes senales, sugerir `/kb:program {idea}` en modo exploratorio o `/kb:anota "oportunidad: ..."`.
 
 ---
 

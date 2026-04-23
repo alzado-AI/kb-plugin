@@ -2,7 +2,7 @@
 name: busca
 domain: core
 tier: basic
-description: "Buscar informacion por tema cruzando Google Chat, Gmail, Drive, Calendar, project tracker, GitHub e internet. Siempre incluye Reuniones KB local. Acepta keyword, rango de fechas y filtro de fuentes: /busca conciliacion, /busca cheques desde:2026-02-01, /busca facturas en:google,tracker,internet."
+description: "Buscar informacion por tema cruzando Google Chat, Gmail, Drive, Calendar, project tracker, GitHub e internet. Siempre incluye Reuniones KB local. Acepta keyword, rango de fechas y filtro de fuentes: /kb:busca conciliacion, /kb:busca cheques desde:2026-02-01, /kb:busca facturas en:google,tracker,internet."
 disable-model-invocation: false
 ---
 
@@ -12,13 +12,13 @@ El usuario quiere buscar informacion sobre un tema cruzando multiples fuentes: G
 
 Extrae de `$ARGUMENTS`:
 
-- **keyword**: el tema a buscar (obligatorio). Ej: `/busca conciliacion` → keyword = "conciliacion"
-- **desde**: fecha inicio opcional. Ej: `/busca cheques desde:2026-02-01` → desde = 2026-02-01
-- **en**: fuentes especificas. Ej: `/busca facturas en:google,tracker` → fuentes = [google, tracker]
+- **keyword**: el tema a buscar (obligatorio). Ej: `/kb:busca conciliacion` → keyword = "conciliacion"
+- **desde**: fecha inicio opcional. Ej: `/kb:busca cheques desde:2026-02-01` → desde = 2026-02-01
+- **en**: fuentes especificas. Ej: `/kb:busca facturas en:google,tracker` → fuentes = [google, tracker]
   - Valores validos: `google` (Chat+Gmail+Drive), `tracker` (project tracker), `codigo` (GitHub), `intercom` (tickets y articulos), `calendar`, `internet` (busqueda web publica), `todas`
-- **todo**: ignora watermarks. Ej: `/busca cheques todo` → buscar_todo = true
+- **todo**: ignora watermarks. Ej: `/kb:busca cheques todo` → buscar_todo = true
 
-Si no hay keyword (solo `/busca`), pregunta que quiere buscar.
+Si no hay keyword (solo `/kb:busca`), pregunta que quiere buscar.
 
 ## Fase 2 — Determinar fuentes
 

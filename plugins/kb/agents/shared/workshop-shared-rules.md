@@ -1,11 +1,11 @@
 # Reglas compartidas de Workshops
 
-Shared entre `/program` y `/project`. Parametro: `{ENTITY_TYPE}` = `program` o `project`.
+Shared entre `/kb:program` y `/kb:project`. Parametro: `{ENTITY_TYPE}` = `program` o `project`.
 
 ## Busqueda de contexto previo
 
 Al crear una entidad nueva, lanzar 4 busquedas en paralelo con graceful degradation:
-- **KB local:** `kb search {keyword}` — en `/project` agregar `kb todo list --pending`
+- **KB local:** `kb search {keyword}` — en `/kb:project` agregar `kb todo list --pending`
 - **Google Workspace:** agente `external-searcher`
 - **Project tracker:** buscar keyword en el provider activo (ver provider definition)
 - **Internet:** `WebSearch(query="{feature} {modulo} {terminos de dominio}")` — saltar silenciosamente si falla o los resultados son genericos sin relacion al dominio

@@ -1,7 +1,7 @@
 {
   "name": "kb",
-  "version": "0.1.0",
-  "description": "Knowledge Base platform — skills, sub-agents, and the kb CLI for Claude Code + Cowork",
+  "version": "0.1.1",
+  "description": "Knowledge Base platform \u2014 skills, sub-agents, and the kb CLI for Claude Code + Cowork",
   "author": {
     "name": "Alzado AI",
     "url": "https://github.com/alzado-AI"
@@ -9,5 +9,12 @@
   "homepage": "https://github.com/alzado-AI/kb-plugin",
   "repository": "https://github.com/alzado-AI/kb-plugin",
   "license": "MIT",
-  "keywords": ["kb", "knowledge-base", "platform", "productivity", "workshop", "workshop-pm"]
+  "keywords": [
+    "kb",
+    "knowledge-base",
+    "platform",
+    "productivity",
+    "workshop",
+    "workshop-pm"
+  ]
 }

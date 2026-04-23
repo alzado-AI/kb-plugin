@@ -1,6 +1,6 @@
 ---
 name: meeting-synthesizer
-description: "Synthesize meeting preparation from pre-researched data. Takes event metadata, GDoc content, previous commitments, and raw findings from meeting-researcher to produce: unfulfilled commitments, suggested agenda, and recommended questions. READ-ONLY — never writes files.\n\nInputs (from /calendario prepara):\n  EVENTO, GDOC_CONTENT, COMPROMISOS_PREVIOS, HALLAZGOS, TIPO_REUNION\n\nExamples:\n- EVENTO: Sprint Review PROJ | HALLAZGOS: {structured findings from researcher}\n- EVENTO: 1:1 Juan | TIPO_REUNION: 1:1"
+description: "Synthesize meeting preparation from pre-researched data. Takes event metadata, GDoc content, previous commitments, and raw findings from meeting-researcher to produce: unfulfilled commitments, suggested agenda, and recommended questions. READ-ONLY — never writes files.\n\nInputs (from /kb:calendario prepara):\n  EVENTO, GDOC_CONTENT, COMPROMISOS_PREVIOS, HALLAZGOS, TIPO_REUNION\n\nExamples:\n- EVENTO: Sprint Review PROJ | HALLAZGOS: {structured findings from researcher}\n- EVENTO: 1:1 Juan | TIPO_REUNION: 1:1"
 model: sonnet
 ---
 

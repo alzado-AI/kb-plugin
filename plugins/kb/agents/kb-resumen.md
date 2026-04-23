@@ -25,7 +25,7 @@ Incluir en el resumen ejecutivo una seccion `## Salud del dominio` con:
 - **Onboarding**: % completo + proximo item del checklist si aplica.
 - **Drift / Conflicts pendientes**: count por severidad.
 
-Esta seccion es parte del resumen ejecutivo estandar — no es opcional. Si los comandos fallan o devuelven vacio (instancia sin white-label configurado), mostrar "Dominio no configurado — sugerir `/empresa`".
+Esta seccion es parte del resumen ejecutivo estandar — no es opcional. Si los comandos fallan o devuelven vacio (instancia sin white-label configurado), mostrar "Dominio no configurado — sugerir `/kb:empresa`".
 
 ## Providers
 

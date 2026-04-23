@@ -5,17 +5,22 @@
     "url": "https://github.com/alzado-AI"
   },
   "metadata": {
-    "description": "Alzado AI plugin marketplace — Knowledge Base platform for Claude Code + Cowork",
-    "version": "0.1.0"
+    "description": "Alzado AI plugin marketplace \u2014 Knowledge Base platform for Claude Code + Cowork",
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "kb",
       "source": "./plugins/kb",
-      "description": "Knowledge Base platform — skills, sub-agents, and kb CLI for Claude Code + Cowork",
-      "version": "0.1.0",
+      "description": "Knowledge Base platform \u2014 skills, sub-agents, and kb CLI for Claude Code + Cowork",
+      "version": "0.1.1",
       "category": "productivity",
-      "tags": ["kb", "workshop", "pm", "knowledge-base"]
+      "tags": [
+        "kb",
+        "workshop",
+        "pm",
+        "knowledge-base"
+      ]
     }
   ]
 }

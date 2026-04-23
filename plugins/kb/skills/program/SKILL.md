@@ -1,7 +1,7 @@
 ---
 name: program
 domain: pm
-description: "Workshop de EXPLORACION: trabajar una oportunidad end-to-end. Hub central del program. El Google Doc ES el workspace — no existe estacion documento separada. Acepta feature y modulo: /program cheques receivables."
+description: "Workshop de EXPLORACION: trabajar una oportunidad end-to-end. Hub central del program. El Google Doc ES el workspace — no existe estacion documento separada. Acepta feature y modulo: /kb:program cheques receivables."
 disable-model-invocation: false
 ---
 
@@ -21,10 +21,10 @@ Citar `[term:slug]` y `[rule:slug]` en el contenido de discovery cuando mencione
 
 El agente delegado (`doc-writer`) es pass-through y no conoce estos primitivos — el workshop es responsable de incluir las citas en el contenido que le pasa.
 
-**Contexto taxonomico:** uno de 3 workshops (+ 1 workflow: `/analiza` → TRIAJE):
-- `/estrategia` → DIRECCION
-- **`/program` → EXPLORACION**
-- `/project` → EJECUCION
+**Contexto taxonomico:** uno de 3 workshops (+ 1 workflow: `/kb:analiza` → TRIAJE):
+- `/kb:estrategia` → DIRECCION
+- **`/kb:program` → EXPLORACION**
+- `/kb:project` → EJECUCION
 
 ## Navegacion libre
 
@@ -60,11 +60,11 @@ kb program show {SLUG} --content-summary   # Igual pero trunca bodies a 500 char
 
 ### 1. Identificar feature y modulo
 
-Si el usuario incluye argumentos (ej: `/program conciliacion bancaria receivables`):
+Si el usuario incluye argumentos (ej: `/kb:program conciliacion bancaria receivables`):
 - Primer argumento(s) = nombre del feature/program
 - Ultimo argumento = modulo (verificar contra `kb program list` o `kb team list`)
 
-Si incluye "actualizar" como primer argumento (ej: `/program actualizar cheques receivables`): modo forzado — ir directo a DISCOVERY en modo ACTUALIZAR (actualizar el Google Doc via doc-writer).
+Si incluye "actualizar" como primer argumento (ej: `/kb:program actualizar cheques receivables`): modo forzado — ir directo a DISCOVERY en modo ACTUALIZAR (actualizar el Google Doc via doc-writer).
 
 Si no incluye argumentos: preguntar "Que program quieres trabajar y en que modulo?"
 
@@ -222,7 +222,7 @@ INSTRUCCION: Actualizar la seccion con el siguiente contenido:
 | voice-of-customer | Sin contexto cliente | Pain points, clientes en riesgo, evidencia | Al iniciar discovery, al definir scope |
 | codebase-navigator | Sin contexto tecnico | Funcionalidad existente, modelo datos | Si toca funcionalidad existente |
 
-### Cuando sugerir `/investiga`
+### Cuando sugerir `/kb:investiga`
 
 - Usuario menciona competidor
 - Se discute referentes UX
@@ -285,10 +285,10 @@ Dos sub-modos: SOLICITAR y RECOLECTAR.
 
 ## ESTACION: PROJECTS
 
-Bridge a `/project`.
+Bridge a `/kb:project`.
 
 1. `kb project list --program {SLUG}` — listar projects del program.
-2. Si existen: presentar tabla con estado. Ofrecer abrir (`/project {nombre} {modulo}`), crear nuevo o ver resumen.
+2. Si existen: presentar tabla con estado. Ofrecer abrir (`/kb:project {nombre} {modulo}`), crear nuevo o ver resumen.
 3. Si no hay: los projects son soluciones concretas dentro de la oportunidad. Crear si el scope esta maduro.
 
 ### Crear project nuevo
@@ -299,7 +299,7 @@ Bridge a `/project`.
    kb project create {slug} --module {MODULO} --need {NEED_SLUG} --program {SLUG} --title "{titulo}" --auto-historial
    ```
 3. Delegar a doc-writer para agregar tabs de project al doc del program (usar `project_tabs` del TEMPLATE).
-4. Sugerir `/project {nombre} {modulo}` para empezar a trabajarlo.
+4. Sugerir `/kb:project {nombre} {modulo}` para empezar a trabajarlo.
 
 ---
 

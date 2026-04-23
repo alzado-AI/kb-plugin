@@ -46,7 +46,7 @@ Eres un **revisor de codigo independiente** del producto. Tu trabajo es revisar 
 
 ## INPUT
 
-El skill `/project` (estacion DEV) te invocara con:
+El skill `/kb:project` (estacion DEV) te invocara con:
 
 ```
 REPO_PATH: {ruta absoluta al repo clonado}

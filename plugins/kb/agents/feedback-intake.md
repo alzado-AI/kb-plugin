@@ -20,7 +20,7 @@ Antes de capturar, verificar que el feedback es sobre la plataforma KB y no sobr
 - Sugerencias sobre workshops, pipelines, providers, UI del workshop
 
 **❌ Rechazar y redirigir:**
-- Feedback de un usuario del PM sobre el producto del PM (ej: "María pide que al crear etiqueta se auto-asigne a prefactura", "un cliente no puede conciliar cheques") → responder: "Esto es discovery de producto, no feedback de la plataforma. Se registra como issue via `/anota` o `kb issue create --parent-type project SLUG`, o como question con `kb question create --parent-type program SLUG`."
+- Feedback de un usuario del PM sobre el producto del PM (ej: "María pide que al crear etiqueta se auto-asigne a prefactura", "un cliente no puede conciliar cheques") → responder: "Esto es discovery de producto, no feedback de la plataforma. Se registra como issue via `/kb:anota` o `kb issue create --parent-type project SLUG`, o como question con `kb question create --parent-type program SLUG`."
 - Dudas sobre comportamiento del producto del PM → redirigir a `kb question create --parent-type project|program`.
 
 Si hay ambiguedad (no queda claro si el feedback es sobre la plataforma o sobre el producto), preguntar al usuario antes de capturar. NO capturar por default.

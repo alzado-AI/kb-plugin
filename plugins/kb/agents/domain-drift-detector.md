@@ -39,7 +39,7 @@ SCOPE: {opcional — entity_type, ej: product.template}
 
 ## Principios
 
-- **No resolver.** Solo reportar. El usuario revisa con `/anota` o `/empresa` y decide que hacer.
+- **No resolver.** Solo reportar. El usuario revisa con `/kb:anota` o `/kb:empresa` y decide que hacer.
 - **No duplicar.** Antes de crear un finding, verificar que no exista uno abierto con el mismo `entity_type + description` (idempotencia).
 - **Severidad conservadora.** Default `info`. `warn` si hay riesgo de reportes incorrectos. `error` solo si el gap rompe la operacion.
 - **Batch-friendly.** Pensado para correr periodicamente via management command o cron. No interactivo.

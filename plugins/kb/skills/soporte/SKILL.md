@@ -1,7 +1,7 @@
 ---
 name: soporte
 domain: core
-description: "Captura, consulta y ejecuta feedback SOBRE LA PLATAFORMA KB (bugs, gaps, friccion del tooling). NO es para feedback que los usuarios del PM dan sobre el producto que el PM construye — eso va a /anota → issue/question bajo program/project. En satellite: captura y estado. En core: pipeline completo, detalle y ejecucion de plan."
+description: "Captura, consulta y ejecuta feedback SOBRE LA PLATAFORMA KB (bugs, gaps, friccion del tooling). NO es para feedback que los usuarios del PM dan sobre el producto que el PM construye — eso va a /kb:anota → issue/question bajo program/project. En satellite: captura y estado. En core: pipeline completo, detalle y ejecucion de plan."
 disable-model-invocation: false
 ---
 
@@ -12,7 +12,7 @@ Eres el **skill de feedback sobre la plataforma KB** (esta herramienta construid
 
 ## SCOPE — Leer antes de capturar
 
-**Regla canonica:** ver `.claude/agents/shared/routing-guide.md` §Feedback Scope. `/soporte` es el skill de entrada del Canal A (plataforma KB). Canal B (producto del PM) NO entra aqui.
+**Regla canonica:** ver `.claude/agents/shared/routing-guide.md` §Feedback Scope. `/kb:soporte` es el skill de entrada del Canal A (plataforma KB). Canal B (producto del PM) NO entra aqui.
 
 
 **✅ SI entra aqui** (feedback sobre la plataforma KB):
@@ -23,7 +23,7 @@ Eres el **skill de feedback sobre la plataforma KB** (esta herramienta construid
 - Sugerencias de mejora sobre la KB misma
 
 **❌ NO entra aqui** (feedback que los usuarios del PM dan sobre el PRODUCTO del PM):
-- "María pide que al crear una etiqueta se asigne a la prefactura" → es discovery de producto, va a `kb issue create --parent-type project` via `/anota` o `/comite`
+- "María pide que al crear una etiqueta se asigne a la prefactura" → es discovery de producto, va a `kb issue create --parent-type project` via `/kb:anota` o `/kb:comite`
 - "Un cliente del banco dice que la conciliacion no matchea cheques" → es issue de producto, va bajo el program/project correspondiente
 - Dudas de comportamiento del producto del PM → `kb question create --parent-type program|project`
 
@@ -48,10 +48,10 @@ kb feedback find KEYWORDS
 
 `$ARGUMENTS` puede ser:
 
-1. **Texto entre comillas** (ej: `/soporte "no puedo exportar facturas"`): Capturar feedback → CAPTURA
-2. **ID numerico** (ej: `/soporte 42`): Mostrar detalle → DETALLE
-3. **`ejecutar ID`** (ej: `/soporte ejecutar 42`): Ejecutar plan → EJECUTAR
-4. **Vacio** (`/soporte` solo): Mostrar pipeline → PIPELINE
+1. **Texto entre comillas** (ej: `/kb:soporte "no puedo exportar facturas"`): Capturar feedback → CAPTURA
+2. **ID numerico** (ej: `/kb:soporte 42`): Mostrar detalle → DETALLE
+3. **`ejecutar ID`** (ej: `/kb:soporte ejecutar 42`): Ejecutar plan → EJECUTAR
+4. **Vacio** (`/kb:soporte` solo): Mostrar pipeline → PIPELINE
 
 ---
 
@@ -74,7 +74,7 @@ Presentar como tabla agrupada por estado:
 - **Descartados** (duplicado consolidado con otro feedback)
 - **Resueltos** (cerrados)
 
-Si hay feedback planificado, sugerir: "Hay N feedbacks con plan listo. Usa `/soporte ejecutar ID` para ejecutar uno."
+Si hay feedback planificado, sugerir: "Hay N feedbacks con plan listo. Usa `/kb:soporte ejecutar ID` para ejecutar uno."
 
 ---
 
@@ -138,7 +138,7 @@ Si `clasificacion=recomendacion` y `client_response` existe:
 > Esta respuesta fue enviada al cliente como notificacion.
 
 Si `estado=planificado`:
-> Este feedback tiene un plan de ejecucion listo. Usa `/soporte ejecutar {ID}` para ejecutarlo con Claude.
+> Este feedback tiene un plan de ejecucion listo. Usa `/kb:soporte ejecutar {ID}` para ejecutarlo con Claude.
 
 Si `estado=descartado` y `triage_summary` menciona duplicado:
 > Este feedback fue consolidado con otro. Ver triage_summary para detalles.

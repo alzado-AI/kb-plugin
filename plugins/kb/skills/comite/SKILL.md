@@ -1,11 +1,11 @@
 ---
 name: comite
 domain: pm
-description: "Comite de triage: revisar issues en Triage, investigar antecedentes, decidir destino (Backlog, cancelar, program/project, consolidar), detectar gaps KB sin Linear. Sin args: scan completo. Con team: /comite receivables. Con issue: /comite AR-1910."
+description: "Comite de triage: revisar issues en Triage, investigar antecedentes, decidir destino (Backlog, cancelar, program/project, consolidar), detectar gaps KB sin Linear. Sin args: scan completo. Con team: /kb:comite receivables. Con issue: /kb:comite AR-1910."
 disable-model-invocation: false
 ---
 
-Eres el **workflow de triage de producto**. Tu rol es revisar issues en estado **Triage** en Linear, investigar antecedentes para tomar decisiones informadas, y decidir el destino de cada issue. NO escribes specs dev-ready — eso es responsabilidad de `/refinar`.
+Eres el **workflow de triage de producto**. Tu rol es revisar issues en estado **Triage** en Linear, investigar antecedentes para tomar decisiones informadas, y decidir el destino de cada issue. NO escribes specs dev-ready — eso es responsabilidad de `/kb:refinar`.
 
 **Reglas de routing del dominio.** Antes de decidir destino, consultar reglas de triage activas: `kb rule resolve --contexto '{"tipo":"triage"}'`. Si una regla activa indica destino especifico para cierto patron de issue, respetarla y citar `[rule:slug]` en la decision. Carga tambien `kb org-context --module {modulo} --format prompt` para detectar si el issue toca un area del dominio donde ya existen programs/projects — evitar duplicar trabajo.
 
@@ -13,14 +13,14 @@ Eres el **workflow de triage de producto**. Tu rol es revisar issues en estado *
 
 **Contexto taxonomico:**
 - Vista Oportunidades en el project-tracker = issues sin proyecto (Triage → Backlog → To do)
-- Este skill opera **solo sobre Triage**. Backlog se trabaja con `/refinar`.
+- Este skill opera **solo sobre Triage**. Backlog se trabaja con `/kb:refinar`.
 - Label relevante unico: `batman -> launchpad` (si viene de soporte)
 
 **Providers:** Ver `.claude/agents/shared/provider-resolution.md`. Capabilities: project-tracker.
 
 **Flujo general:**
 ```
-Triage → /comite (decide destino) → Backlog → /refinar (dev-ready) → To do → /batman (fix rapido)
+Triage → /kb:comite (decide destino) → Backlog → /kb:refinar (dev-ready) → To do → /kb:batman (fix rapido)
 ```
 
 ## MODELO DE NAVEGACION: ESTACIONES
@@ -55,7 +55,7 @@ Obtener issues en Triage de Linear, investigar cada uno, detectar gaps KB, y pre
 
 Obtener issues en Triage via el project-tracker provider activo (ver provider definition para comando de listado de oportunidades/issues por status).
 
-Si no hay issues en Triage, informar y ofrecer opciones (ver Backlog con `/refinar`, o detectar solo GAPS).
+Si no hay issues en Triage, informar y ofrecer opciones (ver Backlog con `/kb:refinar`, o detectar solo GAPS).
 
 **Paso 2: Agrupar y presentar**
 
@@ -172,14 +172,14 @@ Iterar por cada issue. Mostrar brief de decision (de CARGA) y ofrecer decision v
 **Pregunta:** "{IDENTIFIER}: {titulo} — que hacemos?"
 
 **Opciones** (dinamicas segun contexto):
-- **Mover a Backlog** (Recommended si evidencia media) — Necesita refinamiento con `/refinar`
+- **Mover a Backlog** (Recommended si evidencia media) — Necesita refinamiento con `/kb:refinar`
 - **Cancelar** — No aplica o no vale la pena
 - **Convertir a program/project** — Si es >5 dias o necesita discovery
 - **Consolidar con {ID}** — Si se detecto duplicado
 - **Necesita comite** — Flag para discutir en reunion
 - **Mantener en Triage** — Necesita mas contexto antes de decidir
 
-Si elige "Convertir a program/project": sugerir derivar a `/program` o `/project` segun complejidad.
+Si elige "Convertir a program/project": sugerir derivar a `/kb:program` o `/kb:project` segun complejidad.
 
 Si elige "Consolidar": identificar issue principal, marcar otros como duplicados.
 
@@ -248,7 +248,7 @@ kb learning create "Resultado comite de triage {fecha}: Tickets en Triage revisa
 
 Presentar:
 ```
-{N} issues movidos a Backlog. Quieres refinar alguno? (`/refinar {ID}`)
+{N} issues movidos a Backlog. Quieres refinar alguno? (`/kb:refinar {ID}`)
 ```
 
 **Paso 6: Propagacion de completitud**

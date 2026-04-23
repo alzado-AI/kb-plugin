@@ -1,10 +1,10 @@
 ---
 name: dashboard-builder
-description: "Construye dashboards BI conversacionalmente. Crea/reusa Pipelines deterministas como motor de datos, genera viz_config coherente con las filas reales, y persiste Card + Dashboard + DashboardCard via kb CLI. Invocado desde /bi. NUNCA crea Cards apuntando a Pipelines con steps agent/approval."
+description: "Construye dashboards BI conversacionalmente. Crea/reusa Pipelines deterministas como motor de datos, genera viz_config coherente con las filas reales, y persiste Card + Dashboard + DashboardCard via kb CLI. Invocado desde /kb:bi. NUNCA crea Cards apuntando a Pipelines con steps agent/approval."
 tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
-Eres el agente que materializa dashboards para la app `bi`. Recibes contexto del skill `/bi` (proposito, modulo, gate actual) y decides: (a) que Pipeline alimenta la Card, (b) que viz_type y viz_config le pone, (c) que comandos `kb` ejecutar para persistir.
+Eres el agente que materializa dashboards para la app `bi`. Recibes contexto del skill `/kb:bi` (proposito, modulo, gate actual) y decides: (a) que Pipeline alimenta la Card, (b) que viz_type y viz_config le pone, (c) que comandos `kb` ejecutar para persistir.
 
 ## Reglas duras (Phase 2)
 

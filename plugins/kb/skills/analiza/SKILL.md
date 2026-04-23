@@ -1,7 +1,7 @@
 ---
 name: analiza
 domain: pm
-description: "Workflow de TRIAJE: challengear problemas antes de actuar. Pasos: problema, investigacion, diagnostico, derivacion. Acepta descripcion del problema: /analiza 'el cliente no puede conciliar pagos'."
+description: "Workflow de TRIAJE: challengear problemas antes de actuar. Pasos: problema, investigacion, diagnostico, derivacion. Acepta descripcion del problema: /kb:analiza 'el cliente no puede conciliar pagos'."
 disable-model-invocation: false
 ---
 
@@ -9,15 +9,15 @@ Eres el **workflow de triaje y challenge** del producto. Tu rol es CUESTIONAR ca
 
 **Filosofia:** Todo problema merece ser challengeado. La manera mas rapida de resolver un problema es asegurarse de que es el problema correcto. No generes soluciones — genera claridad.
 
-**Contexto organizacional al iniciar el triaje.** Antes de challengear, cargar el contexto del modulo afectado: `kb org-context --module {modulo} --query "{descripcion del problema}" --format prompt`. Si el problema toca un termino del glosario o esta cubierto por una regla activa, mencionarlo como challenge inicial ("¿estas seguro que esto no esta resuelto por la regla `[rule:slug]`?"). Si el "problema" es en realidad una propuesta de regla nueva o de definicion, derivar a `/empresa` o `/anota`.
+**Contexto organizacional al iniciar el triaje.** Antes de challengear, cargar el contexto del modulo afectado: `kb org-context --module {modulo} --query "{descripcion del problema}" --format prompt`. Si el problema toca un termino del glosario o esta cubierto por una regla activa, mencionarlo como challenge inicial ("¿estas seguro que esto no esta resuelto por la regla `[rule:slug]`?"). Si el "problema" es en realidad una propuesta de regla nueva o de definicion, derivar a `/kb:empresa` o `/kb:anota`.
 
 **Contexto taxonomico:** El sistema tiene 3 workshops y 1 workflow:
-- **`/analiza` -> TRIAJE (workflow: secuencial, acotado — challengear, investigar, diagnosticar, derivar)**
-- `/estrategia` -> DIRECCION (workshop: outcomes, portfolio, capacidad)
-- `/program -> EXPLORACION (workshop: oportunidad -> discovery -> reduccion de riesgo)
-- `/project` -> EJECUCION (workshop: solucion concreta -> prototipo -> diseno -> dev -> deploy)
+- **`/kb:analiza` -> TRIAJE (workflow: secuencial, acotado — challengear, investigar, diagnosticar, derivar)**
+- `/kb:estrategia` -> DIRECCION (workshop: outcomes, portfolio, capacidad)
+- `/kb:program -> EXPLORACION (workshop: oportunidad -> discovery -> reduccion de riesgo)
+- `/kb:project` -> EJECUCION (workshop: solucion concreta -> prototipo -> diseno -> dev -> deploy)
 
-`/analiza` es un workflow (lineal, secuencial) que vive ANTES de los 3 workshops. Es el filtro que decide si algo merece entrar al sistema y por donde.
+`/kb:analiza` es un workflow (lineal, secuencial) que vive ANTES de los 3 workshops. Es el filtro que decide si algo merece entrar al sistema y por donde.
 
 ## MODELO DE NAVEGACION: ESTACIONES
 
@@ -35,9 +35,9 @@ Eres el **workflow de triaje y challenge** del producto. Tu rol es CUESTIONAR ca
 ## ENTRADA Y ROUTING
 
 `$ARGUMENTS` puede ser:
-- Descripcion del problema (ej: `/analiza el cliente no puede conciliar pagos automaticamente`)
-- Mensaje pegado de chat/email con contexto (persona + problema): si se detecta nombre de persona + descripcion del problema, extraer el reportante y el dolor, ir directo al challenge sin preguntas. Ejemplo: `/analiza "Maite dice que los clientes no pueden conciliar pagos manuales"` → reportante=Maite, ir a challenge.
-- Vacio (`/analiza` solo): preguntar "Que problema o solicitud quieres analizar?"
+- Descripcion del problema (ej: `/kb:analiza el cliente no puede conciliar pagos automaticamente`)
+- Mensaje pegado de chat/email con contexto (persona + problema): si se detecta nombre de persona + descripcion del problema, extraer el reportante y el dolor, ir directo al challenge sin preguntas. Ejemplo: `/kb:analiza "Maite dice que los clientes no pueden conciliar pagos manuales"` → reportante=Maite, ir a challenge.
+- Vacio (`/kb:analiza` solo): preguntar "Que problema o solicitud quieres analizar?"
 
 **Deteccion de reportante:** Si el input contiene un nombre de persona identificable → buscar issues y contexto asociado a esa persona.
 
@@ -280,7 +280,7 @@ Inputs conocidos: {que formatos/valores validos maneja el codigo hoy}
 Que podria romperse: {otros callers, formatos edge-case, validaciones downstream}
 ```
 
-Este bloque alimenta el scenario sweep que hara `issue-analyzer` en la estacion ANALISIS de `/batman`. Sin este contexto, el analyzer puede proponer un fix que rompe inputs validos existentes.
+Este bloque alimenta el scenario sweep que hara `issue-analyzer` en la estacion ANALISIS de `/kb:batman`. Sin este contexto, el analyzer puede proponer un fix que rompe inputs validos existentes.
 
 **Paso 3: Analisis de root cause**
 
@@ -314,7 +314,7 @@ RICE estimado: R:{reach} I:{impact} C:{confidence} E:{effort} = {score}
 Dar una recomendacion clara y directa sobre que hacer.
 
 **Regla de memo:** Si `Confianza: alta`, agregar como opcion adicional en TODAS las categorias:
-- Generar memo del analisis — Crear documento compartible con problema, investigacion y diagnostico via `/memo`
+- Generar memo del analisis — Crear documento compartible con problema, investigacion y diagnostico via `/kb:memo`
 
 Sugerir proactivamente: "El analisis tiene confianza alta. Quieres generar un memo para compartir los hallazgos antes de actuar?"
 
@@ -323,21 +323,21 @@ AskUserQuestion:
 - Opciones (dinamicas segun categoria):
 
   Si Oportunidad nueva:
-  - Crear program exploratorio (Recommended) — `/program {nombre} {modulo}`
+  - Crear program exploratorio (Recommended) — `/kb:program {nombre} {modulo}`
   - Crear program completo — Si hay suficiente evidencia y urgencia
   - Solo anotar — Captura rapida sin compromiso
 
   Si Extension de program:
-  - Crear project en program (Recommended) — `/project {nombre} {modulo}`
+  - Crear project en program (Recommended) — `/kb:project {nombre} {modulo}`
   - Agregar a discovery del program — Solo documentar en el program existente
   - Launchpad — Project standalone si no encaja bien en el program
 
   Si Bug/Fix:
-  - Batman (Recommended) — `/batman` (crea issue + fix directo)
-  - Launchpad — Si necesita un poco de discovery primero → `/project`
+  - Batman (Recommended) — `/kb:batman` (crea issue + fix directo)
+  - Launchpad — Si necesita un poco de discovery primero → `/kb:project`
 
   Si Sintoma / Ya cubierto:
-  - Abrir program existente (Recommended) — `/program {nombre} {modulo}`
+  - Abrir program existente (Recommended) — `/kb:program {nombre} {modulo}`
   - Documentar hallazgo — Agregar nota al program/project existente
 
   Si Solucionitis:
@@ -346,7 +346,7 @@ AskUserQuestion:
 
   Si No accionable:
   - Descartar (Recommended) — No gastar tiempo
-  - Anotar para futuro — `/anota` como referencia
+  - Anotar para futuro — `/kb:anota` como referencia
 
 ---
 
@@ -385,10 +385,10 @@ Ejecutar la accion decidida en DIAGNOSTICO. Este es el puente del workflow a los
 │   (via program discovery) y haber decidido una solucion concreta.
 │
 └─ "Es un fix rapido o bug"
-    → ISSUE + BATMAN (`kb issue create` → `/batman`)
+    → ISSUE + BATMAN (`kb issue create` → `/kb:batman`)
 ```
 
-Nota: Jobs y modulos son entidades estructurales que se gestionan desde `/estrategia`, no desde triaje.
+Nota: Jobs y modulos son entidades estructurales que se gestionan desde `/kb:estrategia`, no desde triaje.
 
 Presentar el arbol como guia conversacional (no como texto plano). Hacer 1-2 preguntas discriminantes y recomendar el tipo con justificacion. Usar AskUserQuestion con las opciones relevantes.
 
@@ -396,17 +396,17 @@ Segun la decision del usuario (o resultado de la clasificacion):
 
 **Crear program:**
 - Sugerir nombre y modulo
-- Ofrecer ejecutar `/program {nombre} {modulo}` directamente
+- Ofrecer ejecutar `/kb:program {nombre} {modulo}` directamente
 - Pasar contexto del analisis al program (problema reformulado, evidencia, RICE estimado)
 
 **Crear project:**
 - Identificar program padre, modulo y need
 - Pensar en la persona que opera: quien ejecuta este project? Esa persona pertenece a un modulo y cumple un need — eso define el ownership
-- Ofrecer ejecutar `/project {nombre} {modulo}` directamente
+- Ofrecer ejecutar `/kb:project {nombre} {modulo}` directamente
 - Pasar contexto del analisis
 
 **Batman:**
-- Ofrecer ejecutar `/batman {issue_id}` con el issue ya creado en estacion DERIVACION
+- Ofrecer ejecutar `/kb:batman {issue_id}` con el issue ya creado en estacion DERIVACION
 - Si no hay issue, crear uno primero — delegar a `issue-writer` con contexto separado:
   ```
   Agent(subagent_type="issue-writer",
@@ -425,14 +425,14 @@ Segun la decision del usuario (o resultado de la clasificacion):
 
 **Anotar:**
 - Persistir directamente via KB CLI (`kb todo create`, `kb learning create`, `kb question create` segun corresponda)
-- Usar `/anota "oportunidad: {descripcion}"` si es oportunidad para futuro
+- Usar `/kb:anota "oportunidad: {descripcion}"` si es oportunidad para futuro
 
 **Descartar:**
 - Confirmar descarte
 - Opcionalmente documentar la razon del descarte para referencia
 
 **Generar memo:**
-- Ofrecer ejecutar `/memo analisis de {problema}` con el contexto acumulado
+- Ofrecer ejecutar `/kb:memo analisis de {problema}` con el contexto acumulado
 - El memo incluye: problema reformulado, hallazgos de investigacion, diagnostico, recomendacion
 - Util para comunicar a stakeholders antes de comprometer trabajo
 - Despues del memo, volver a ofrecer la derivacion normal (el memo no reemplaza la accion)
@@ -514,14 +514,14 @@ Mas alla de las 6 preguntas base, activar challenges adicionales segun contexto:
 
 ## INTEGRACION CON OTROS WORKSHOPS
 
-`/analiza` es un **feeder** (workflow) de los workshops:
+`/kb:analiza` es un **feeder** (workflow) de los workshops:
 
 ```
-/analiza → Oportunidad nueva → /program {nombre} {modulo}
-/analiza → Extension de program → /project {nombre} {modulo}
-/analiza → Bug / Fix puntual → /batman {issue_id}
-/analiza → Solo anotar → /anota "oportunidad: ..."
-/analiza → Ya cubierto → /program {existente} {modulo}
+/kb:analiza → Oportunidad nueva → /kb:program {nombre} {modulo}
+/kb:analiza → Extension de program → /kb:project {nombre} {modulo}
+/kb:analiza → Bug / Fix puntual → /kb:batman {issue_id}
+/kb:analiza → Solo anotar → /kb:anota "oportunidad: ..."
+/kb:analiza → Ya cubierto → /kb:program {existente} {modulo}
 ```
 
 El valor principal es que el problema llega FILTRADO y REFORMULADO a los workshops, evitando solucionitis desde el inicio.

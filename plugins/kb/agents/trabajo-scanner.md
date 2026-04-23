@@ -207,8 +207,8 @@ Dos niveles de stock monitoreados desde Linear, ambos por team:
 - Threshold: stock To Do < 5 por team → alerta alta
 - **Acciones de relleno cuando To Do < 5 (minimo 10 sugerencias por team):**
   1. **Desde Triage:** Listar issues en Triage → evaluar completitud (titulo claro, descripcion, prioridad) → sugerir decidir destino (Backlog/cancelar/program)
-  2. **Desde Backlog:** Listar issues en Backlog → evaluar completitud → sugerir completar info faltante y mover a To Do. Skill: `/refinar {issue-id}`
-  3. **Desde KB (ideas sueltas):** Buscar acciones/oportunidades en KB que NO formen parte de un program/project existente → candidatos a issues tipo launchpad → priorizados vs lo que ya esta en Backlog. Skill: `/anota` para crear issue
+  2. **Desde Backlog:** Listar issues en Backlog → evaluar completitud → sugerir completar info faltante y mover a To Do. Skill: `/kb:refinar {issue-id}`
+  3. **Desde KB (ideas sueltas):** Buscar acciones/oportunidades en KB que NO formen parte de un program/project existente → candidatos a issues tipo launchpad → priorizados vs lo que ya esta en Backlog. Skill: `/kb:anota` para crear issue
   4. Si entre las 3 fuentes no se alcanzan 10 sugerencias, ampliar busqueda en KB: acciones pendientes sin modulo, preguntas abiertas, learning items sin accion derivada
 - Surfacear conteo completo Y cada issue individual por bucket
 - Si hay candidatos de relleno, listarlos con accion concreta
@@ -221,7 +221,7 @@ Dos niveles de stock monitoreados desde Linear, ambos por team:
 - **Acciones de relleno cuando Discovery < 2 (minimo 5 sugerencias por team):**
   1. Buscar en KB el proximo discovery que haga mayor sentido estrategico: cruzar programs con Objectives activos, RICE score, y gaps detectados por `kb query gaps`
   2. Sugerir avanzar discovery del project con mayor impacto estrategico para cerrar su documento y alimentar el pipeline
-  3. Skill: `/project {feature} {modulo}` (estacion DISCOVERY) o `/program {slug}` (estacion PROJECTS)
+  3. Skill: `/kb:project {feature} {modulo}` (estacion DISCOVERY) o `/kb:program {slug}` (estacion PROJECTS)
   4. Si no se alcanzan 5 sugerencias desde programs con RICE, buscar tambien: objectives sin cobertura de programs, programs sin need asignado, programs en-evaluacion sin projects, acciones de tipo "oportunidad" en KB
 - Surfacear conteo completo Y cada project individual por bucket
 - Si hay candidatos, listar minimo 5 con justificacion estrategica
@@ -241,22 +241,22 @@ Desde Gmail/Chat/Drive:
 
 ### D9: LANDSCAPE ESTRATEGICO (Prioridad Media)
 Cruces:
-- Oportunidades sin referente investigado → sugerir `/investiga`
+- Oportunidades sin referente investigado → sugerir `/kb:investiga`
 - Objectives sin oportunidades validadas → research needed
 - Iniciativas en project-tracker sin proyecto → ideas sin desarrollar
 - Research completado sin accion derivada
-- Objectives en DB sin proyectos en project-tracker → gap de ejecucion, sugerir `/project` o `/program` (estacion LINEAR)
-- Proyectos activos en project-tracker sin Objective vinculado → solucionitis, sugerir `/estrategia` para revisar alineamiento
+- Objectives en DB sin proyectos en project-tracker → gap de ejecucion, sugerir `/kb:project` o `/kb:program` (estacion LINEAR)
+- Proyectos activos en project-tracker sin Objective vinculado → solucionitis, sugerir `/kb:estrategia` para revisar alineamiento
 
 **Trabajo sin ancla estrategica:**
 - Acciones pendientes sin modulo → tarea: "Asignar modulo a {N} acciones huerfanas"
 - Projects activos sin module o need asignados (`kb project list` donde module o need es null) → tarea: "Asignar module/need a project via `kb project update SLUG --module M --need N`"
 
 **Gaps estrategicos:**
-- `kb objective list` retorna vacio → tarea: "Define los Outcomes del ciclo" → `/estrategia init`
-- Programs activos con Objective "sin asignar" → tarea: "Asigna Objective a {nombre}" → `/program {slug}`
-- Programs sin campos OST en index.md (formato legacy) → tarea: "Actualiza {discovery} con campos OST" → `/actualiza`
-- Objectives sin ninguna oportunidad vinculada → tarea: "Objective {nombre} sin oportunidades — explorar necesidades" → `/anota "oportunidad: ..."`
+- `kb objective list` retorna vacio → tarea: "Define los Outcomes del ciclo" → `/kb:estrategia init`
+- Programs activos con Objective "sin asignar" → tarea: "Asigna Objective a {nombre}" → `/kb:program {slug}`
+- Programs sin campos OST en index.md (formato legacy) → tarea: "Actualiza {discovery} con campos OST" → `/kb:actualiza`
+- Objectives sin ninguna oportunidad vinculada → tarea: "Objective {nombre} sin oportunidades — explorar necesidades" → `/kb:anota "oportunidad: ..."`
 
 ### D10: QUICK WINS (Prioridad Baja)
 Items que toman <5 min:
@@ -299,7 +299,7 @@ primera_vez: {si|no}
 
 === EQUIPO ===
 - persona: {name} | rol: {role} | trabajando_en: {text} | estado: {state} | necesita_de_ti: {si|no}
-- wip_alerta: {persona} tiene {N} projects activos en {team} (max: 1) | prioridad: alta | skill: /estrategia
+- wip_alerta: {persona} tiene {N} projects activos en {team} (max: 1) | prioridad: alta | skill: /kb:estrategia
 (sin limite, omitir seccion si vacia)
 
 === STALENESS ===
@@ -318,12 +318,12 @@ stock_oportunidades_detalle: {team} | status: {Triage|Backlog|To Do} | issue_id:
 stock_projects: {team}: idea={N} discovery={N} issue_breakdown={N} build={N} | threshold_discovery: 2
 stock_projects_detalle: {team} | status: {Idea|Discovery|Issue breakdown|Build} | project_id: {id} | titulo: {titulo} | lead: {nombre|sin asignar}
 (repetir por cada project)
-- stock_alerta_oportunidades: {team} tiene {N} oportunidades en To Do (threshold: 5) | prioridad: alta | skill: /batman {id}
-- relleno_oportunidad_backlog: {issue-id} "{titulo}" en Backlog — {estado_completitud} | skill: /refinar {id}
-- relleno_oportunidad_triage: {issue-id} "{titulo}" en Triage — {estado_completitud} | skill: /comite {id}
-- relleno_oportunidad_kb: "{accion/idea}" en KB sin program/project — candidato launchpad | skill: /anota
-- stock_alerta_projects: {team} tiene {N} projects en Discovery (threshold: 2) | prioridad: alta | skill: /project {slug}
-- relleno_project: "{project}" (program: {program}, RICE: {score}, Objective: {objective}) — proximo discovery recomendado | skill: /project {feature} {modulo}
+- stock_alerta_oportunidades: {team} tiene {N} oportunidades en To Do (threshold: 5) | prioridad: alta | skill: /kb:batman {id}
+- relleno_oportunidad_backlog: {issue-id} "{titulo}" en Backlog — {estado_completitud} | skill: /kb:refinar {id}
+- relleno_oportunidad_triage: {issue-id} "{titulo}" en Triage — {estado_completitud} | skill: /kb:comite {id}
+- relleno_oportunidad_kb: "{accion/idea}" en KB sin program/project — candidato launchpad | skill: /kb:anota
+- stock_alerta_projects: {team} tiene {N} projects en Discovery (threshold: 2) | prioridad: alta | skill: /kb:project {slug}
+- relleno_project: "{project}" (program: {program}, RICE: {score}, Objective: {objective}) — proximo discovery recomendado | skill: /kb:project {feature} {modulo}
 
 === LANDSCAPE ===
 - senal: {text} | skill: {skill} | prioridad: media
@@ -334,7 +334,7 @@ stock_projects_detalle: {team} | status: {Idea|Discovery|Issue breakdown|Build} 
 (omitir seccion si vacia)
 
 === NOTIFICACIONES ===
-- avisar_a: {person} ({company}) | sobre: {text} | completado: {date} | skill: /anota
+- avisar_a: {person} ({company}) | sobre: {text} | completado: {date} | skill: /kb:anota
 (sin limite de items, omitir seccion si vacia)
 
 === QUICK WINS ===
@@ -392,9 +392,9 @@ Guardar estado via `kb context set trabajo-estado VALUE` donde VALUE es un JSON 
 | Caso | Comportamiento |
 |------|---------------|
 | Primera vez (sin context trabajo-estado) | Crear estado inicial, mensaje de bienvenida |
-| KB vacia (sin acciones, sin discoveries) | Tareas de inicio: "Para arrancar: /tutorial primeros-pasos → /estrategia init → /anota" |
+| KB vacia (sin acciones, sin discoveries) | Tareas de inicio: "Para arrancar: /kb:tutorial primeros-pasos → /kb:estrategia init → /kb:anota" |
 | Provider falla (workspace/project-tracker) | Funciona con KB local. Warning en footer: "Fuentes: KB (Gmail: timeout)" |
-| Todo verde, sin tareas | "Sin tareas criticas. Revisar alineamiento con /estrategia o explorar nueva oportunidad con /program." |
+| Todo verde, sin tareas | "Sin tareas criticas. Revisar alineamiento con /kb:estrategia o explorar nueva oportunidad con /kb:program." |
 | Filtro por modulo | Solo tareas de ese modulo. Indicar filtro en header |
 | Misma fecha que ultima sesion | No duplicar historial. Re-scan normal |
 
@@ -408,7 +408,7 @@ Guardar estado via `kb context set trabajo-estado VALUE` donde VALUE es un JSON 
 4. **No inventar datos.** Si una fuente no existe, omitir esa dimension.
 5. **Sin limite de items.** Devolver TODOS los items encontrados por dimension.
 6. **Skills concretos.** Cada tarea debe tener el skill exacto que el PM ejecutaria.
-6b. **Jerarquia de skills.** Si la tarea involucra avanzar un project (tiene estado en DB via `"$KB_CLI" project show`)`), el skill sugerido es `/project {feature} {modulo}` — NUNCA `/pdd`, `/discovery`, `/linear`, `/dev`, `/ddd`, ni `/app` directamente. Estos son estaciones DENTRO de `/project o /program` y no se sugieren standalone. Excepciones (skills independientes que se sugieren directamente): `/calendario`, `/busca`, `/investiga`, `/anota`, `/memo`, `/pendientes`, `/resumen`, `/matriz`, `/estrategia`, `/comentarios`, `/codigo`, `/actualiza`, `/tutorial`, `/program` (para programs exploratorios).
+6b. **Jerarquia de skills.** Si la tarea involucra avanzar un project (tiene estado en DB via `"$KB_CLI" project show`)`), el skill sugerido es `/kb:project {feature} {modulo}` — NUNCA `/pdd`, `/discovery`, `/linear`, `/dev`, `/ddd`, ni `/app` directamente. Estos son estaciones DENTRO de `/kb:project o /kb:program` y no se sugieren standalone. Excepciones (skills independientes que se sugieren directamente): `/kb:calendario`, `/kb:busca`, `/kb:investiga`, `/kb:anota`, `/kb:memo`, `/kb:pendientes`, `/kb:resumen`, `/kb:matriz`, `/kb:estrategia`, `/kb:comentarios`, `/kb:codigo`, `/kb:actualiza`, `/kb:tutorial`, `/kb:program` (para programs exploratorios).
 7. **Auto-detect es conservador.** En caso de duda sobre si algo se completo, no sumarlo.
 8. **Snapshot debe ser reproducible.** Guardar suficiente detalle en context para comparar en proxima sesion.
 9. **Paralelizar MCP calls.** Lanzar todos los grupos A-E en paralelo al inicio.

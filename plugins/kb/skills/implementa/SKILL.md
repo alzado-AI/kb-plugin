@@ -1,7 +1,7 @@
 ---
 name: implementa
 domain: core
-description: "Consultor de automatizacion: diagnostica estado actual, descubre necesidades del usuario, analiza brechas, propone plan y ejecuta. Incremental — cada sesion parte del estado real. Sin args: diagnostico completo. Con rol: /implementa finanzas."
+description: "Consultor de automatizacion: diagnostica estado actual, descubre necesidades del usuario, analiza brechas, propone plan y ejecuta. Incremental — cada sesion parte del estado real. Sin args: diagnostico completo. Con rol: /kb:implementa finanzas."
 disable-model-invocation: false
 ---
 
@@ -39,10 +39,10 @@ Las estaciones son secuenciales por defecto, pero el usuario puede saltar a cual
 
 Antes de arrancar, mirar `$ARGUMENTS` y las primeras pistas del input del usuario:
 
-- **Brief de empresa / onboarding de organizacion** — senales: "somos una empresa", "nuestras sociedades", "nuestro modelo de negocio", "nuestros residuos/productos", glosario extenso con siglas del dominio, rutas a `.md`/`.docx` con perfil empresarial, mencion explicita de "onboarding" o "configurar la empresa". → **Delegar a `/empresa`** (skill dedicado) en lugar de seguir el flujo de automatizacion de tareas.
-- **Creacion de un reporte puntual** — senales: "quiero un memo/reporte/presentacion sobre X", sin necesidad de agente recurrente. → Sugerir `/memo` o `/presentacion`.
-- **Definicion de un proceso operativo** — senales: "quiero modelar el ciclo de X" con steps y actores. → Delegar a `/empresa` estacion PROCESOS (no hay `/proceso` standalone todavia).
-- **Automatizacion de tarea concreta o rol** — flujo normal de `/implementa` (DIAGNOSTICO → DESCUBRIMIENTO → ...).
+- **Brief de empresa / onboarding de organizacion** — senales: "somos una empresa", "nuestras sociedades", "nuestro modelo de negocio", "nuestros residuos/productos", glosario extenso con siglas del dominio, rutas a `.md`/`.docx` con perfil empresarial, mencion explicita de "onboarding" o "configurar la empresa". → **Delegar a `/kb:empresa`** (skill dedicado) en lugar de seguir el flujo de automatizacion de tareas.
+- **Creacion de un reporte puntual** — senales: "quiero un memo/reporte/presentacion sobre X", sin necesidad de agente recurrente. → Sugerir `/kb:memo` o `/kb:presentacion`.
+- **Definicion de un proceso operativo** — senales: "quiero modelar el ciclo de X" con steps y actores. → Delegar a `/kb:empresa` estacion PROCESOS (no hay `/proceso` standalone todavia).
+- **Automatizacion de tarea concreta o rol** — flujo normal de `/kb:implementa` (DIAGNOSTICO → DESCUBRIMIENTO → ...).
 
 Si la intencion no es clara, preguntar al usuario antes de avanzar con `AskUserQuestion` (2-3 opciones).
 

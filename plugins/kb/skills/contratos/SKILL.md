@@ -10,7 +10,7 @@ El usuario quiere gestionar contratos con clientes.
 
 `$ARGUMENTS` puede ser:
 - Vacio: vista completa de contratos agrupados por estado
-- Nombre de empresa: filtrar por cliente (ej: `/contratos acme`)
+- Nombre de empresa: filtrar por cliente (ej: `/kb:contratos acme`)
 
 ## Contexto organizacional (cargar al arrancar)
 

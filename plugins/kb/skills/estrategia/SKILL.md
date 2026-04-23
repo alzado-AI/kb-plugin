@@ -24,10 +24,10 @@ Ver `.claude/agents/shared/org-context.md`. Ademas de objectives/programs/capaci
 
 Citar `[term:slug]` y `[rule:slug]` cuando la estrategia menciona conceptos canonicos del dominio.
 
-**Contexto taxonomico:** Este es uno de 3 workshops del sistema (+ 1 workflow: `/analiza` → TRIAJE):
-- **`/estrategia` -> DIRECCION (outcomes, portfolio, capacidad)**
-- `/program -> EXPLORACION (oportunidad -> discovery -> reduccion de riesgo)
-- `/project` -> EJECUCION (solucion concreta -> prototipo -> diseno -> dev -> deploy)
+**Contexto taxonomico:** Este es uno de 3 workshops del sistema (+ 1 workflow: `/kb:analiza` → TRIAJE):
+- **`/kb:estrategia` -> DIRECCION (outcomes, portfolio, capacidad)**
+- `/kb:program -> EXPLORACION (oportunidad -> discovery -> reduccion de riesgo)
+- `/kb:project` -> EJECUCION (solucion concreta -> prototipo -> diseno -> dev -> deploy)
 
 **Providers:** Ver `.claude/agents/shared/provider-resolution.md`. Capabilities: project-tracker (via delegados), workspace (via delegados), sales-intel (via delegados).
 
@@ -39,7 +39,7 @@ Citar `[term:slug]` y `[rule:slug]` cuando la estrategia menciona conceptos cano
     +--------+     +----------+     +--------+     +--------+
          |
     +---------+
-    | MODULO  |---> Bridge a /program o /project
+    | MODULO  |---> Bridge a /kb:program o /kb:project
     +---------+
     (deep dive: interno + mercado + cliente → roadmap)
 ```
@@ -159,8 +159,8 @@ Las UNICAS secciones permitidas son: Portfolio Estrategico, Tension Estrategica,
   - Outcomes (Recommended) — Definir o editar outcomes del ciclo
   - Programs — Listar y priorizar programs
   - Review — Detectar problemas estrategicos
-  - Deep dive modulo — /estrategia {modulo}
-  - Abrir program — /program {feature} {modulo}
+  - Deep dive modulo — /kb:estrategia {modulo}
+  - Abrir program — /kb:program {feature} {modulo}
 
 ---
 
@@ -168,7 +168,7 @@ Las UNICAS secciones permitidas son: Portfolio Estrategico, Tension Estrategica,
 
 ### Proposito
 
-Deep dive estrategico de un modulo: cruzar perspectiva interna (KB), mercado (competidores/referentes), y cliente (Intercom, emails, chat, Diio) para fundamentar decisiones de roadmap. Es el input natural antes de ir a `/program` o `/project`.
+Deep dive estrategico de un modulo: cruzar perspectiva interna (KB), mercado (competidores/referentes), y cliente (Intercom, emails, chat, Diio) para fundamentar decisiones de roadmap. Es el input natural antes de ir a `/kb:program` o `/kb:project`.
 
 ### Cuando se activa
 
@@ -273,7 +273,7 @@ AskUserQuestion:
 - Pregunta: "Quieres profundizar en algun referente o avanzar?"
 - Opciones:
   - Avanzar a voz del cliente (Recommended) — Continuar el deep dive
-  - Profundizar {Referente} — Teardown completo via /investiga
+  - Profundizar {Referente} — Teardown completo via /kb:investiga
   - Saltar a sintesis — Ya tengo suficiente
 
 ---
@@ -333,7 +333,7 @@ GAPS vs MERCADO:
 - {gap}: {evidencia de referentes} + {evidencia de clientes}
 
 OPORTUNIDADES SIN PROGRAM:
-- {oportunidad}: {evidencia} → Candidato a /program
+- {oportunidad}: {evidencia} → Candidato a /kb:program
 
 SOBRE-INVERSION (programs sin demanda):
 - {program}: {razon de alerta}
@@ -398,9 +398,9 @@ Presentar resumen de acciones ejecutadas.
 AskUserQuestion:
 - Pregunta: "Que quieres hacer ahora?"
 - Opciones:
-  - Abrir program (Recommended) — /program {feature} {modulo}
-  - Abrir project — /project {feature} {modulo}
-  - Vista estrategica — Volver a /estrategia
+  - Abrir program (Recommended) — /kb:program {feature} {modulo}
+  - Abrir project — /kb:project {feature} {modulo}
+  - Vista estrategica — Volver a /kb:estrategia
   - Otro modulo — Deep dive en otro modulo
 
 ---
@@ -521,8 +521,8 @@ AskUserQuestion:
 - Opciones:
   - Vista (Recommended) — Ver portfolio estrategico completo
   - Programs — Listar programs y vincular a Objectives
-  - Explorar oportunidad — /program {feature} {modulo}
-  - Captura rapida — /anota "oportunidad: ..."
+  - Explorar oportunidad — /kb:program {feature} {modulo}
+  - Captura rapida — /kb:anota "oportunidad: ..."
 
 ---
 
@@ -530,7 +530,7 @@ AskUserQuestion:
 
 ### Proposito
 
-Listar programs, ver RICE, priorizar, crear nuevos. Bridge a `/program`.
+Listar programs, ver RICE, priorizar, crear nuevos. Bridge a `/kb:program`.
 
 ### Ejecucion
 
@@ -562,7 +562,7 @@ AskUserQuestion:
 - Pregunta: "Que quieres hacer?"
 - Opciones:
   - Vincular a Objectives (Recommended) — Asignar programs a objectives del ciclo
-  - Abrir program — /program {nombre} {modulo}
+  - Abrir program — /kb:program {nombre} {modulo}
   - Repriorizar — Ajustar RICE de un program
   - Vista completa — Volver a VISTA
 
@@ -686,13 +686,13 @@ Todos opcionales. El workshop es graceful si alguno falta.
 ## FLUJO TIPICO
 
 ```
-/estrategia init -> define Outcomes del ciclo (conversacional)
-/anota "oportunidad: ..." -> captura rapida (crea program exploratorio)
-/estrategia {modulo} -> deep dive estrategico (interno + mercado + cliente → roadmap)
-/program {feature} {modulo} -> explora con RICE y discovery
-/estrategia -> ver portfolio estrategico (programs con RICE)
-/estrategia review -> detectar problemas estrategicos
-/project {feature} {modulo} -> comprometer solution space
+/kb:estrategia init -> define Outcomes del ciclo (conversacional)
+/kb:anota "oportunidad: ..." -> captura rapida (crea program exploratorio)
+/kb:estrategia {modulo} -> deep dive estrategico (interno + mercado + cliente → roadmap)
+/kb:program {feature} {modulo} -> explora con RICE y discovery
+/kb:estrategia -> ver portfolio estrategico (programs con RICE)
+/kb:estrategia review -> detectar problemas estrategicos
+/kb:project {feature} {modulo} -> comprometer solution space
 ```
 
 ## TONO Y ESTILO

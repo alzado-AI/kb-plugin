@@ -374,7 +374,7 @@ kb template create {slug} --name "{nombre legible}" --tipo presentation --file /
 === TEMPLATE CREADO ===
 Slug: {slug}
 Slides: {N} ({lista de slots})
-Para usar: /presentacion {tema} --template {slug}
+Para usar: /kb:presentacion {tema} --template {slug}
 ```
 
 ---

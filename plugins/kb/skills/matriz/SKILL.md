@@ -54,7 +54,7 @@ Tomar los datos del agente y renderizarlos con este template:
 
 ---
 Q1:{q1_count} | Q2:{q2_count} | Q3:{q3_count} | Q4:{q4_count}
-`/estrategia` para vista estrategica | `/pendientes` para lista por tiers
+`/kb:estrategia` para vista estrategica | `/kb:pendientes` para lista por tiers
 ```
 
 Reglas de formateo:

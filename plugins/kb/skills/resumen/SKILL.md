@@ -35,7 +35,7 @@ Genera un resumen ejecutivo de la base de conocimiento. Fecha actual: {fecha de 
 {Si $ARGUMENTS esta vacio: "Alcance: todos los productos."}
 ```
 
-Si el usuario incluyo argumentos (ej: `/resumen Accounting`, `/resumen contabilidad`, `/resumen CxC`), pasalos como filtro al agente. Acepta nombre en espanol o ingles.
+Si el usuario incluyo argumentos (ej: `/kb:resumen Accounting`, `/kb:resumen contabilidad`, `/kb:resumen CxC`), pasalos como filtro al agente. Acepta nombre en espanol o ingles.
 
 El agente devuelve datos estructurados (secciones `=== META ===`, `=== MODULO: X ===`, `=== TABLA RESUMEN ===`), NO output formateado.
 

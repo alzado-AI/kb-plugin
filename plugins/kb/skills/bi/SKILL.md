@@ -1,7 +1,7 @@
 ---
 name: bi
 domain: pm
-description: "Workshop para construir dashboards de BI conversacionalmente. Estaciones: proposito → datasource → viz → preview → publicar. Acepta tema libre: /bi facturas por mes desde odoo."
+description: "Workshop para construir dashboards de BI conversacionalmente. Estaciones: proposito → datasource → viz → preview → publicar. Acepta tema libre: /kb:bi facturas por mes desde odoo."
 disable-model-invocation: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: actualiza
 domain: core
-description: "Auditoria de documentos KB. Detecta referencias deprecadas a skills/agentes y propone actualizaciones. Sin argumentos: audita todo. Con nombre: /actualiza solucion."
+description: "Auditoria de documentos KB. Detecta referencias deprecadas a skills/agentes y propone actualizaciones. Sin argumentos: audita todo. Con nombre: /kb:actualiza solucion."
 disable-model-invocation: false
 ---
 
@@ -139,16 +139,16 @@ Para cada referencia deprecada encontrada:
 - Clasificar como **DEPRECADO** con propuesta de actualizacion a CLI
 
 Determinar skills/agentes relevantes por estacion:
-- PROBLEMA/INVESTIGACION/DIAGNOSTICO/DERIVACION → `/analiza`
-- DISCOVERY → `/program (estacion DISCOVERY)), `doc-writer`
+- PROBLEMA/INVESTIGACION/DIAGNOSTICO/DERIVACION → `/kb:analiza`
+- DISCOVERY → `/kb:program (estacion DISCOVERY)), `doc-writer`
 - DOCUMENTO → `doc-writer` (escribe directamente al Google Doc del program/project)
-- FEEDBACK → `/program (estacion FEEDBACK)), `feedback-solicitor`, `feedback-collector`
-- PROTOTIPO → `/project` (estacion PROTOTIPO), `app-builder`
-- DISENO → `/project` (estacion DISENO), `design-reader`
-- PROJECTS → `/program` (estacion PROJECTS)
-- LINEAR → `/program (estacion LINEAR)), `project-planner`
-- DEV → `/project` (estacion DEV), `issue-analyzer`, `code-implementer`, `code-reviewer`, `code-publisher`
-- TICKET → `/batman`
+- FEEDBACK → `/kb:program (estacion FEEDBACK)), `feedback-solicitor`, `feedback-collector`
+- PROTOTIPO → `/kb:project` (estacion PROTOTIPO), `app-builder`
+- DISENO → `/kb:project` (estacion DISENO), `design-reader`
+- PROJECTS → `/kb:program` (estacion PROJECTS)
+- LINEAR → `/kb:program (estacion LINEAR)), `project-planner`
+- DEV → `/kb:project` (estacion DEV), `issue-analyzer`, `code-implementer`, `code-reviewer`, `code-publisher`
+- TICKET → `/kb:batman`
 
 Si `$ARGUMENTS` especificado: solo procesar estados cuya estacion sea relevante para ese skill/agente.
 
@@ -360,9 +360,9 @@ Edit — reemplazar el texto desactualizado con el texto propuesto
 Para cada aviso aprobado, agregar nota en el historial del program/project via CLI:
 
 ```bash
-kb program add-historial SLUG --texto "⚠️ /actualiza [{estacion}]: {descripcion del cambio}"
+kb program add-historial SLUG --texto "⚠️ /kb:actualiza [{estacion}]: {descripcion del cambio}"
 # o para projects:
-kb project add-historial SLUG --texto "⚠️ /actualiza [{estacion}]: {descripcion del cambio}"
+kb project add-historial SLUG --texto "⚠️ /kb:actualiza [{estacion}]: {descripcion del cambio}"
 ```
 
 ### Refs deprecadas — Actualizar skills/agentes

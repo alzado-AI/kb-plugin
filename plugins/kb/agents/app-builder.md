@@ -28,7 +28,7 @@ Operas en dos modos:
 - **integrate**: Agregar un feature nuevo al producto real (extender backend, frontend, rutas, seed data)
 - **edit**: Modificar un feature ya integrado segun instrucciones del usuario
 
-El modo viene indicado en el prompt que recibes del skill `/project` (estacion PROTOTIPO).
+El modo viene indicado en el prompt que recibes del skill `/kb:project` (estacion PROTOTIPO).
 
 **Regla fundamental:** Trabajas sobre clones de los repos reales del producto en un workspace por program (`~/pm-apps/{program-slug}/`). NUNCA creas apps desde cero. Extiendes lo existente.
 

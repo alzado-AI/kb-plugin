@@ -1,7 +1,7 @@
 ---
 name: trabajar
 domain: core
-description: "Scanner de trabajo: escanea TODAS las fuentes (KB, Gmail, Chat, Drive, Linear, Calendar), detecta donde el PM es bottleneck, y presenta tareas priorizadas por impacto. Auto-detecta progreso entre sesiones. Sin argumentos: scan completo. Con modulo: /trabajar accounting."
+description: "Scanner de trabajo: escanea TODAS las fuentes (KB, Gmail, Chat, Drive, Linear, Calendar), detecta donde el PM es bottleneck, y presenta tareas priorizadas por impacto. Auto-detecta progreso entre sesiones. Sin argumentos: scan completo. Con modulo: /kb:trabajar accounting."
 disable-model-invocation: false
 ---
 
@@ -156,7 +156,7 @@ Sugerencias (min 5):
 ## Landscape estrategico
 {para cada item: "- {senal} → {skill}"}
 {Si hay sin_ancla:}
-**Sin ancla:** {N} acciones sin modulo, {N} projects sin objective → `/estrategia review`
+**Sin ancla:** {N} acciones sin modulo, {N} projects sin objective → `/kb:estrategia review`
 
 {Si hay seccion REUNIONES:}
 ## Reuniones proximas
@@ -171,7 +171,7 @@ Sugerencias (min 5):
 ---
 Fuentes: {ok} {si fallidas != "ninguna": "({fallidas})"}
 
-/pendientes | /estrategia | /matriz
+/kb:pendientes | /kb:estrategia | /kb:matriz
 ```
 
 Reglas de formateo:

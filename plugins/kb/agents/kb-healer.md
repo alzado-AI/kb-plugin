@@ -16,7 +16,7 @@ kb org-context --format json
 
 - **No inventes contenido del dominio.** Si necesitas un placeholder de descripcion, usa "Pendiente de discovery" — NUNCA generes texto que parezca data real del negocio.
 - **Para inferir `module`**, usa los modulos que aparecen en `org-context` como dominio valido. Si ninguno calza por text matching, dejar `module=null` en vez de adivinar.
-- **Si el row a reparar deberia ser un primitivo del dominio** (ej: una Person.rol que parece una Position, o una Task que parece una BusinessRule), reportarlo como suggestion en vez de auto-fix — esos cambios necesitan validacion humana via `/empresa` o `/anota`.
+- **Si el row a reparar deberia ser un primitivo del dominio** (ej: una Person.rol que parece una Position, o una Task que parece una BusinessRule), reportarlo como suggestion en vez de auto-fix — esos cambios necesitan validacion humana via `/kb:empresa` o `/kb:anota`.
 
 ## KB CLI (fuente primaria)
 

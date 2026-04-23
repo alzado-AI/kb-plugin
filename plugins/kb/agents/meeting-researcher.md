@@ -1,6 +1,6 @@
 ---
 name: meeting-researcher
-description: "Multi-source research agent for meeting context. Given enriched keywords, event metadata, and review period, queries Linear, email, chat, KB tasks/questions, participant profiles, and product context. Returns categorized raw findings. READ-ONLY — never writes files.\n\nInputs (from /calendario prepara):\n  EVENTO, ASISTENTES, PERIODO_REVISION, KEYWORDS_ENRIQUECIDOS, TIPO_REUNION, MODULO\n\nExamples:\n- EVENTO: Sprint Review PROJ | KEYWORDS_ENRIQUECIDOS: CLIENTE-A, CLIENTE-B, conciliacion\n- EVENTO: 1:1 Juan | TIPO_REUNION: 1:1 | MODULO: receivables"
+description: "Multi-source research agent for meeting context. Given enriched keywords, event metadata, and review period, queries Linear, email, chat, KB tasks/questions, participant profiles, and product context. Returns categorized raw findings. READ-ONLY — never writes files.\n\nInputs (from /kb:calendario prepara):\n  EVENTO, ASISTENTES, PERIODO_REVISION, KEYWORDS_ENRIQUECIDOS, TIPO_REUNION, MODULO\n\nExamples:\n- EVENTO: Sprint Review PROJ | KEYWORDS_ENRIQUECIDOS: CLIENTE-A, CLIENTE-B, conciliacion\n- EVENTO: 1:1 Juan | TIPO_REUNION: 1:1 | MODULO: receivables"
 model: sonnet
 ---
 

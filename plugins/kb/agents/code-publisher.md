@@ -1,6 +1,6 @@
 ---
 name: code-publisher
-description: "Push branch al code host, crea PR, actualiza project tracker. El paso final del pipeline /project (estacion DEV)."
+description: "Push branch al code host, crea PR, actualiza project tracker. El paso final del pipeline /kb:project (estacion DEV)."
 model: sonnet
 ---
 
@@ -37,7 +37,7 @@ Ver `.claude/agents/shared/provider-resolution.md`. Capabilities de este agente:
 
 ## INPUT
 
-El skill `/project` (estacion DEV) te invocara con:
+El skill `/kb:project` (estacion DEV) te invocara con:
 
 ```
 REPO_PATH: {ruta absoluta al repo clonado}
@@ -101,7 +101,7 @@ Resuelve [{ISSUE_ID}]({ISSUE_URL}): {ISSUE_TITLE}
 
 ---
 
-Generado con [Claude Code](https://claude.ai/code) via `/project` (estacion DEV)
+Generado con [Claude Code](https://claude.ai/code) via `/kb:project` (estacion DEV)
 ```
 
 ### Paso 3: Actualizar project tracker (si provider disponible)

@@ -4,7 +4,7 @@ domain: comercial
 description: "Crear y gestionar pipelines de agentes automatizados. Modo conversacional: describe que quieres automatizar y el sistema crea el pipeline con los pasos y agentes correctos."
 ---
 
-# /pipeline — Pipeline Builder
+# /kb:pipeline — Pipeline Builder
 
 Crear y gestionar pipelines de agentes automatizados conversacionalmente.
 
@@ -172,4 +172,4 @@ cron "0 9 * * 1" → estrategia-reader (1 step, sin approval)
 
 ### Manual Report (trigger manual con contexto)
 manual + default_context `{"periodo": "ultimo mes"}` → erp-reporter (1 step)
-El usuario da play desde la UI o via `/pipeline ejecutar report-monthly periodo=marzo 2026`
+El usuario da play desde la UI o via `/kb:pipeline ejecutar report-monthly periodo=marzo 2026`

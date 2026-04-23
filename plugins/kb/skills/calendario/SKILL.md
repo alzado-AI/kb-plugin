@@ -2,7 +2,7 @@
 name: calendario
 domain: core
 tier: basic
-description: "Navegar el calendario: agenda, busqueda, prep de reuniones y sync. /calendario semana, /calendario busca standup, /calendario prepara nombre, /calendario sync"
+description: "Navegar el calendario: agenda, busqueda, prep de reuniones y sync. /kb:calendario semana, /kb:calendario busca standup, /kb:calendario prepara nombre, /kb:calendario sync"
 disable-model-invocation: false
 ---
 
@@ -319,7 +319,7 @@ Despues de guardar el prep (o incluso si el usuario no guarda pero el prep se ge
    - Por nombre de persona (asistentes del evento)
    - Por tema (keywords del titulo del evento)
    - Ejemplos: "Preparar reunion con X", "Revisar contexto de Y"
-3. Si encuentra matches, ofrecer marcar como completadas (mismo patron que /comentarios Fase 4)
+3. Si encuentra matches, ofrecer marcar como completadas (mismo patron que /kb:comentarios Fase 4)
 
 ---
 

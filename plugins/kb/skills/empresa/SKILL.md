@@ -13,8 +13,8 @@ Este skill es **idempotente**. Si se vuelve a correr con un brief editado, hace 
 ## INPUT
 
 El usuario puede pasar:
-- Texto pegado inline tras `/empresa`
-- Ruta a un archivo: `/empresa ~/brief-bravo.md`
+- Texto pegado inline tras `/kb:empresa`
+- Ruta a un archivo: `/kb:empresa ~/brief-bravo.md`
 - Sin argumentos: preguntar "¿de donde saco el brief?"
 
 Si el input es una ruta, leer el archivo con Read. Si es texto libre, tratarlo directo. Si es un `.docx` o `.pdf`, pedir al usuario que lo convierta a texto plano primero — el extractor es format-agnostic.
@@ -98,7 +98,7 @@ Navegacion libre: el usuario puede saltar a cualquier estacion. Estado persisten
 ### Estacion MAPEOS — `ProviderMapping` (opcional)
 
 1. Correr `kb provider list --check` para ver si hay provider configurado.
-2. Si no hay: skip la estacion con un mensaje "No hay provider configurado, los mapeos se pueden crear despues con `/empresa --solo-mapeos`".
+2. Si no hay: skip la estacion con un mensaje "No hay provider configurado, los mapeos se pueden crear despues con `/kb:empresa --solo-mapeos`".
 3. Si hay: del JSON, tomar `provider_mappings[]`. Para cada uno:
    - Validar que el provider existe (`kb provider list`).
    - Validar que los tags (term slugs) y rules (rule slugs) existen en KB.

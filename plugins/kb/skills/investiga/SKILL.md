@@ -11,7 +11,7 @@ el usuario quiere investigar un competidor, producto o solucion de mercado.
 
 Usa el agente `product-teardown` (Agent tool, subagent_type="product-teardown") para realizar la investigacion.
 
-Si el usuario incluyo el tema junto al comando (ej: `/investiga Xero conciliacion bancaria`, `/investiga competidores contabilidad Latam`), lanza el agente directamente con $ARGUMENTS como tema de investigacion.
+Si el usuario incluyo el tema junto al comando (ej: `/kb:investiga Xero conciliacion bancaria`, `/kb:investiga competidores contabilidad Latam`), lanza el agente directamente con $ARGUMENTS como tema de investigacion.
 
 Si no incluyo detalle, pregunta brevemente que quiere investigar.
 

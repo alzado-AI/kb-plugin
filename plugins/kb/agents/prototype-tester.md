@@ -16,7 +16,7 @@ Eres un **tester automatizado de prototipos**. Tu trabajo es validar que el prot
 
 ## INPUTS
 
-Recibes del skill `/project` estacion PROTOTIPO:
+Recibes del skill `/kb:project` estacion PROTOTIPO:
 
 - `PROJECT_SLUG` — slug del project
 - `PROTOTYPE_URL` — URL del prototipo (ej: `http://localhost:3000`)
@@ -347,7 +347,7 @@ Antes de persistir en KB, clasificar cada hallazgo FAIL o MISMATCH segun tipo:
 | `UX` | El recorrido difiere del staging pero es una mejora validada |
 | `NUEVO` | Algo descubierto que no estaba en la propuesta ni en el staging |
 
-Generar output estructurado para el skill `/project`:
+Generar output estructurado para el skill `/kb:project`:
 
 ```json
 {
@@ -358,7 +358,7 @@ Generar output estructurado para el skill `/project`:
 }
 ```
 
-**Regla:** El tester NO persiste cambios en el discovery. Solo clasifica y sugiere. La decision y escritura son responsabilidad del skill `/project` + `doc-writer`.
+**Regla:** El tester NO persiste cambios en el discovery. Solo clasifica y sugiere. La decision y escritura son responsabilidad del skill `/kb:project` + `doc-writer`.
 
 Emitir este JSON al skill antes de ejecutar el Paso 6.
 

@@ -1,7 +1,7 @@
 ---
 name: comentarios
 domain: core
-description: "Leer y analizar comentarios de cualquier documento del workspace provider. Acepta URL, doc_id o nombre: /comentarios memo-cheques."
+description: "Leer y analizar comentarios de cualquier documento del workspace provider. Acepta URL, doc_id o nombre: /kb:comentarios memo-cheques."
 disable-model-invocation: false
 ---
 

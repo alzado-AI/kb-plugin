@@ -2,7 +2,7 @@
 name: tutorial
 domain: core
 tier: basic
-description: "Guia dinamica del sistema. Sin argumentos: panorama completo personalizado al estado actual de tu KB. Con argumento: deep dive en un skill o concepto (ej: /tutorial ost, /tutorial dev, /tutorial primeros-pasos)."
+description: "Guia dinamica del sistema. Sin argumentos: panorama completo personalizado al estado actual de tu KB. Con argumento: deep dive en un skill o concepto (ej: /kb:tutorial ost, /kb:tutorial dev, /kb:tutorial primeros-pasos)."
 ---
 
 ## Paso 1: Obtener datos
@@ -33,8 +33,8 @@ Hola {nombre_usuario de ESTADO}
 El sistema cubre el ciclo completo de un PM de producto:
 
 Problema llega → Gestionar oportunidades → Trabajar features → Gestionar tiempo
-    /analiza         /estrategia              /project               /matriz
-                     /program                  /project            /pendientes
+    /kb:analiza         /kb:estrategia              /kb:project               /kb:matriz
+                     /kb:program                  /kb:project            /kb:pendientes
 
 Cada skill tiene un proposito especifico. No son alternativas — son vistas complementarias.
 
@@ -99,7 +99,7 @@ Reglas de formateo:
 | `matriz` / `eisenhower` / `tiempo` | Eisenhower, Q1-Q4, gestion del tiempo del PM |
 | `analiza` / `triaje` / `challenge` | Workflow de triaje: challengear problemas antes de actuar |
 | `project`, `solucion`, `ciclo`, `feature`, `lifecycle` | Workshop de ejecucion, ciclo de vida del feature |
-| `dev` | Pipeline issue → PR con gates (estacion DEV de /project) |
+| `dev` | Pipeline issue → PR con gates (estacion DEV de /kb:project) |
 | `batman`, `fix`, `issue` | Workshop de fix rapido end-to-end |
 | `comite`, `comite de producto` | Workflow de comite: revisar issues en Triage, investigar antecedentes, decidir destino |
 | `refinar`, `refinamiento`, `backlog` | Workflow de refinamiento: completar issues en Backlog con spec dev-ready |

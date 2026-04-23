@@ -2,7 +2,7 @@
 name: pendientes
 domain: core
 tier: basic
-description: "Vista consolidada y priorizada de todos los pendientes de el usuario. Sin argumentos muestra todo; con argumento de modulo (ej: /pendientes accounting) filtra por modulo."
+description: "Vista consolidada y priorizada de todos los pendientes de el usuario. Sin argumentos muestra todo; con argumento de modulo (ej: /kb:pendientes accounting) filtra por modulo."
 disable-model-invocation: false
 ---
 
@@ -59,7 +59,7 @@ Genera la vista consolidada de pendientes de el usuario. Fecha actual: {fecha de
 {Si $ARGUMENTS esta vacio: "Sin filtro. Muestra todos los pendientes."}
 ```
 
-Si el usuario incluyo argumentos (ej: `/pendientes accounting`, `/pendientes contabilidad`, `/pendientes CxC`), pasalos como filtro al agente. Acepta nombre en espanol o ingles.
+Si el usuario incluyo argumentos (ej: `/kb:pendientes accounting`, `/kb:pendientes contabilidad`, `/kb:pendientes CxC`), pasalos como filtro al agente. Acepta nombre en espanol o ingles.
 
 ## Phase 2: Formatear output
 
@@ -77,7 +77,7 @@ El agente devuelve datos estructurados (secciones `=== META ===`, `=== MODULO: X
 (repetir tabla por cada MODULO del output del agente, omitir modulos sin items)
 
 ---
-`/resumen` para profundizar | `/matriz` para Eisenhower | `/estrategia` para vista estrategica
+`/kb:resumen` para profundizar | `/kb:matriz` para Eisenhower | `/kb:estrategia` para vista estrategica
 ```
 
 Reglas de formateo:

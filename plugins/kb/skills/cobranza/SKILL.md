@@ -10,7 +10,7 @@ El usuario quiere ver el estado de cobranza / cuentas por cobrar.
 
 `$ARGUMENTS` puede ser:
 - Vacio: vista completa de cobranza
-- Nombre de cliente: filtrar por empresa (ej: `/cobranza acme`)
+- Nombre de cliente: filtrar por empresa (ej: `/kb:cobranza acme`)
 
 ## Contexto organizacional (cargar al arrancar)
 

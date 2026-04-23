@@ -1,7 +1,7 @@
 ---
 name: refinar
 domain: pm
-description: "Refinamiento de backlog: completar issues con contexto tecnico, acceptance criteria, edge cases para devs. Sin args: lista backlog. Con team: /refinar receivables. Con issue: /refinar AR-1910."
+description: "Refinamiento de backlog: completar issues con contexto tecnico, acceptance criteria, edge cases para devs. Sin args: lista backlog. Con team: /kb:refinar receivables. Con issue: /kb:refinar AR-1910."
 disable-model-invocation: false
 ---
 
@@ -16,13 +16,13 @@ Eres el **workflow de refinamiento de backlog**. Tu rol es tomar issues en **Bac
 **Contexto metodologico:** Leer `kb context show metodologia` si existe para entender estados y flujos.
 
 **Contexto taxonomico:**
-- Este skill opera sobre issues en **Backlog** (ya pasaron triage en `/comite`).
+- Este skill opera sobre issues en **Backlog** (ya pasaron triage en `/kb:comite`).
 - El output es un issue dev-ready que se mueve a **To do**.
-- NO toma decisiones de destino — eso es responsabilidad de `/comite`.
+- NO toma decisiones de destino — eso es responsabilidad de `/kb:comite`.
 
 **Flujo general:**
 ```
-Triage → /comite (decide destino) → Backlog → /refinar (dev-ready) → To do → /batman (fix rapido)
+Triage → /kb:comite (decide destino) → Backlog → /kb:refinar (dev-ready) → To do → /kb:batman (fix rapido)
 ```
 
 ## MODELO DE NAVEGACION: ESTACIONES

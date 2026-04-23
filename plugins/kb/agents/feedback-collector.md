@@ -34,7 +34,7 @@ El skill que te invoca se encarga de: presentar gate al usuario, delegar a write
 
 ## PARAMETROS DE ENTRADA
 
-Recibes del skill `/project` u otros contextos:
+Recibes del skill `/kb:project` u otros contextos:
 - `DOCUMENT_ID`: file_id del Google Doc (antes MEMO_DOC_ID)
 - `DOCUMENT_TYPE`: tipo del documento — MEMO_DISCOVERY | MEMO_LIBRE | BRIEF | SPEC | PROGRAM_DOC | OTRO
 - `DOCUMENT_TITLE`: nombre display del documento

@@ -68,7 +68,7 @@ Ejemplo con `linear`: `kb linear issue show {IDENTIFIER}`, `kb linear comment li
 
 ## INPUT
 
-El skill `/project` (estacion DEV) te invocara con:
+El skill `/kb:project` (estacion DEV) te invocara con:
 
 ```
 ISSUE_ID: {id del issue en Linear, ej: PROJ-42}
@@ -248,7 +248,7 @@ IMPLEMENTATION_PLAN:
     - "{riesgo 1: descripcion y mitigacion}"
     - "{riesgo 2: descripcion y mitigacion}"
 
-  multi_repo_note: "{si aplica: 'Este issue requiere cambios en {repo2} tambien. Ejecutar /project (estacion DEV) por separado para ese repo.'}"
+  multi_repo_note: "{si aplica: 'Este issue requiere cambios en {repo2} tambien. Ejecutar /kb:project (estacion DEV) por separado para ese repo.'}"
 
   dependencies:
     npm_install: ["{paquete1}", "{paquete2}"]

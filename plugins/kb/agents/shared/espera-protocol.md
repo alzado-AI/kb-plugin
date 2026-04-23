@@ -1,10 +1,10 @@
 # Protocolo de Esperas (Parkeo)
 
-Shared entre `/program` y `/project`. Parametros:
+Shared entre `/kb:program` y `/kb:project`. Parametros:
 - `{ENTITY_TYPE}`: `program` o `project`
 - `{SLUG}`: slug de la entidad
 
-**Tipos comunes:** `feedback` (auto-check de doc comments al retomar), `reunion`, `decision`, `pausa`. En `/project` agregan: `review` (auto-check de CI + review status via code-host provider), `diseno` (preguntar al usuario).
+**Tipos comunes:** `feedback` (auto-check de doc comments al retomar), `reunion`, `decision`, `pausa`. En `/kb:project` agregan: `review` (auto-check de CI + review status via code-host provider), `diseno` (preguntar al usuario).
 
 ## Parkear
 

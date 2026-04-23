@@ -1,7 +1,7 @@
 ---
 name: audit
 domain: pm
-description: "Comparar discovery/tecnica.md vs codigo implementado. Modos: completeness (que falta) y drift (que divergio). Acepta program/project y repo: /audit cheques receivables, /audit drift cheques."
+description: "Comparar discovery/tecnica.md vs codigo implementado. Modos: completeness (que falta) y drift (que divergio). Acepta program/project y repo: /kb:audit cheques receivables, /kb:audit drift cheques."
 disable-model-invocation: false
 ---
 
@@ -17,9 +17,9 @@ Parsear `$ARGUMENTS`:
 - **modulo**: modulo del producto (ej: `receivables`)
 
 Ejemplos:
-- `/audit cheques receivables` → completeness de cheques en receivables
-- `/audit drift cheques receivables` → drift de cheques
-- `/audit cheques` → buscar en todos los modulos
+- `/kb:audit cheques receivables` → completeness de cheques en receivables
+- `/kb:audit drift cheques receivables` → drift de cheques
+- `/kb:audit cheques` → buscar en todos los modulos
 
 ## Fase 1 — Leer especificacion
 

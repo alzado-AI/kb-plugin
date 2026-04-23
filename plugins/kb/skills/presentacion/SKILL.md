@@ -1,7 +1,7 @@
 ---
 name: presentacion
 domain: core
-description: "Generar presentacion HTML autocontenida con narracion TTS desde contenido KB o tema libre. Template-driven con builder colaborativo. Acepta tema, template y estilo: /presentacion cheques receivables, /presentacion builder reporte sprint."
+description: "Generar presentacion HTML autocontenida con narracion TTS desde contenido KB o tema libre. Template-driven con builder colaborativo. Acepta tema, template y estilo: /kb:presentacion cheques receivables, /kb:presentacion builder reporte sprint."
 disable-model-invocation: false
 ---
 
@@ -19,7 +19,7 @@ Analizar argumentos del usuario:
 
 ## MODO D — TEMPLATE BUILDER
 
-Si el usuario escribio `/presentacion builder {descripcion}`:
+Si el usuario escribio `/kb:presentacion builder {descripcion}`:
 
 1. Extraer la descripcion (todo despues de "builder")
 2. Lanzar `presentation-preparer` en Modo D:
@@ -31,7 +31,7 @@ builder: {descripcion}
 ```
 
 3. Al terminar, reportar el slug del template creado y como usarlo:
-   - "Para generar una presentacion con este template: `/presentacion {tema} --template {slug}`"
+   - "Para generar una presentacion con este template: `/kb:presentacion {tema} --template {slug}`"
 
 **Fin del flujo para Modo D.**
 
@@ -43,11 +43,11 @@ builder: {descripcion}
 
 #### 1. Identificar tema
 
-Si el usuario incluyo argumentos (ej: `/presentacion estado del proyecto cheques`):
+Si el usuario incluyo argumentos (ej: `/kb:presentacion estado del proyecto cheques`):
 - Interpretar como tema de la presentacion
 - Extraer flags si hay: `--template SLUG`, `--estilo E`, `--tts on|off`, `--slides N`, `--voice VOICE`
 
-Si no incluyo argumentos (`/presentacion` solo):
+Si no incluyo argumentos (`/kb:presentacion` solo):
 - Preguntar via AskUserQuestion:
   ```
   question: "Que presentacion quieres generar?"

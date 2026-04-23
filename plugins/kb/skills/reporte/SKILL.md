@@ -1,7 +1,7 @@
 ---
 name: reporte
 domain: pm
-description: "Workshop para crear Reports conversacionalmente — archivos (xlsx/docx/pdf/csv/html/json) generados por Pipelines. Estaciones: proposito → pipeline → parametros → preview → publicar. Acepta tema libre: /reporte cobranza mensual."
+description: "Workshop para crear Reports conversacionalmente — archivos (xlsx/docx/pdf/csv/html/json) generados por Pipelines. Estaciones: proposito → pipeline → parametros → preview → publicar. Acepta tema libre: /kb:reporte cobranza mensual."
 disable-model-invocation: false
 ---
 

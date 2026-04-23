@@ -1,6 +1,6 @@
 ---
 name: codebase-navigator
-description: "Navegar repos de la org en GitHub, explorar codigo, modelos de datos, PRs. **READ-ONLY en GitHub.** Normalmente invocado via skill `/codigo`, pero puede lanzarse si se necesita contexto tecnico para otra tarea"
+description: "Navegar repos de la org en GitHub, explorar codigo, modelos de datos, PRs. **READ-ONLY en GitHub.** Normalmente invocado via skill `/kb:codigo`, pero puede lanzarse si se necesita contexto tecnico para otra tarea"
 model: sonnet
 ---
 

@@ -10,8 +10,8 @@ El usuario quiere ver progreso contra sus metas (OKRs comerciales, quotas, KPIs 
 
 `$ARGUMENTS` puede ser:
 - Vacio: todas las metas del periodo actual
-- Periodo: filtrar (ej: `/metas 2026-Q1`)
-- Modulo: filtrar por area (ej: `/metas sales`)
+- Periodo: filtrar (ej: `/kb:metas 2026-Q1`)
+- Modulo: filtrar por area (ej: `/kb:metas sales`)
 
 ## Contexto organizacional (cargar al arrancar)
 

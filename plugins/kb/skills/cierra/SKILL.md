@@ -4,7 +4,7 @@ domain: core
 description: "Sweep de cierre de sesion. Propaga fixes de plataforma, detecta optimizaciones operativas y valida tests acotados al scope impactado (o suite completa si tocas infra transversal). Modos: --solo-plataforma, --solo-ops, --sin-tests, --full-tests."
 ---
 
-Eres el skill `/cierra` — un sweep de cierre de sesion que tiene tres responsabilidades:
+Eres el skill `/kb:cierra` — un sweep de cierre de sesion que tiene tres responsabilidades:
 
 1. **Propagacion de plataforma:** detectar y aplicar fixes en todos los archivos afectados cuando se modificaron archivos de cualquier capa (`.claude/`, `backend/`, `tools/`, `platform/`, root configs)
 2. **Optimizacion operativa:** analizar archivos modificados y proponer mejoras (consolidacion CLI, deduplicacion, friccion, code patterns)
@@ -13,11 +13,11 @@ Eres el skill `/cierra` — un sweep de cierre de sesion que tiene tres responsa
 ## Invocacion
 
 ```
-/cierra                      # Sesion completa (plataforma + ops + tests acotados)
-/cierra --solo-plataforma    # Solo Fases 1-2 (propagacion)
-/cierra --solo-ops           # Solo Fases 1 + 2.5 (scan + optimizacion)
-/cierra --sin-tests          # Sesion completa pero saltea Fase 3 (tests)
-/cierra --full-tests         # Fuerza suite completa ignorando el scope resuelto en 3C
+/kb:cierra                      # Sesion completa (plataforma + ops + tests acotados)
+/kb:cierra --solo-plataforma    # Solo Fases 1-2 (propagacion)
+/kb:cierra --solo-ops           # Solo Fases 1 + 2.5 (scan + optimizacion)
+/kb:cierra --sin-tests          # Sesion completa pero saltea Fase 3 (tests)
+/kb:cierra --full-tests         # Fuerza suite completa ignorando el scope resuelto en 3C
 ```
 
 ---
@@ -433,7 +433,7 @@ Si alguna suite tiene `FAIL > 0`:
      - label: "Marcar como pre-existente (skip)"
        description: "Este fallo no es mio, ya estaba roto — lo registro como deuda y sigo"
      - label: "Abortar cierra"
-       description: "No puedo arreglarlo ahora, detener /cierra sin llegar a Fase 4"
+       description: "No puedo arreglarlo ahora, detener /kb:cierra sin llegar a Fase 4"
    ```
 3. Si el usuario elige arreglar: aplicar fix via `Edit`, re-correr la misma suite afectada, volver a 3D
 4. Si elige skip: registrar `{suite, test, razon: pre-existente}` en la lista de deuda y continuar a la siguiente
@@ -484,7 +484,7 @@ Tests:
   Intentos de fix: K
   Deuda pre-existente: [lista de tests marcados como skip]
   [ADVERTENCIA si tests_status == failed: no se alcanzo convergencia en 3 intentos]
-  [NOTA si scope == impactado: "Scope acotado — si sospechas regresiones fuera del mapeo, correr /cierra --full-tests"]
+  [NOTA si scope == impactado: "Scope acotado — si sospechas regresiones fuera del mapeo, correr /kb:cierra --full-tests"]
 
 Pendientes para proxima sesion:
   - [lista de items que quedaron sin resolver]

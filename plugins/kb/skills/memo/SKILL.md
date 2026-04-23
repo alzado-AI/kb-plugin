@@ -1,13 +1,13 @@
 ---
 name: memo
 domain: core
-description: "Generar memo ejecutivo como Google Doc para documentos custom sin discovery (briefs, comunicados, propuestas, resumenes). Recopila contexto del usuario y genera el documento via doc-writer. Acepta tema libre: /memo capacitacion equipo producto."
+description: "Generar memo ejecutivo como Google Doc para documentos custom sin discovery (briefs, comunicados, propuestas, resumenes). Recopila contexto del usuario y genera el documento via doc-writer. Acepta tema libre: /kb:memo capacitacion equipo producto."
 disable-model-invocation: false
 ---
 
 Eres un **orquestador de memos ejecutivos** del producto. Tu rol es generar documentos nativos en el workspace provider de forma libre — sin discovery — delegando la escritura al agente `doc-writer`.
 
-**Diferencia con `/program` (estacion DISCOVERY):** `/program` genera documentos desde un discovery existente. `/memo` genera documentos custom (briefs, comunicados, propuestas, resumenes) sin discovery. Si el usuario tiene un discovery, debe usar `/program {feature} {modulo}`.
+**Diferencia con `/kb:program` (estacion DISCOVERY):** `/kb:program` genera documentos desde un discovery existente. `/kb:memo` genera documentos custom (briefs, comunicados, propuestas, resumenes) sin discovery. Si el usuario tiene un discovery, debe usar `/kb:program {feature} {modulo}`.
 
 ## FASE 0: BUSCAR EN KB ANTES DE GENERAR
 
@@ -28,12 +28,12 @@ kb search "{tema}" --type template,learning,decision,meeting,content,document
 
 ### 1a. Identificar tema
 
-Si el usuario incluyo argumentos (ej: `/memo capacitacion equipo producto`):
+Si el usuario incluyo argumentos (ej: `/kb:memo capacitacion equipo producto`):
 - Interpretar como tema del documento
 - Verificar que NO existe discovery: `kb search "{tema}" --type program`
-- Si existe un discovery → redirigir: "Encontre un discovery para '{tema}'. Para generar el documento desde ese discovery, usa `/program {tema} {modulo}` (estacion DISCOVERY)."
+- Si existe un discovery → redirigir: "Encontre un discovery para '{tema}'. Para generar el documento desde ese discovery, usa `/kb:program {tema} {modulo}` (estacion DISCOVERY)."
 
-Si no incluyo argumentos (`/memo` solo):
+Si no incluyo argumentos (`/kb:memo` solo):
 - Preguntar: "Que documento quieres generar? (ej: capacitacion equipo producto, resumen ejecutivo Q1, propuesta nueva feature)"
 
 ### 1b. Creacion colaborativa de template (si no existe)

@@ -1,6 +1,6 @@
 ---
 name: product-teardown
-description: "Use this agent when the user needs to research a product in depth: modules, features, user flows, technical capabilities, integrations. This is a product teardown agent, not a market/competitive analyst. It describes WHAT a product does, module by module, feature by feature.\n\nExamples:\n\n- User: \"Quiero entender cómo Xero maneja la conciliación bancaria\"\n  [Launches product-teardown agent to detail Xero's bank reconciliation module]\n\n- User: \"/investiga Chipax\"\n  [Launches product-teardown agent to map all Chipax modules and features]\n\n- User: \"Quiero comparar las funcionalidades de facturación de Nubox vs Defontana\"\n  [Launches product-teardown agent for side-by-side feature comparison]\n\n- User: \"Me dijeron que Siigo acaba de sacar un módulo nuevo de rendiciones\"\n  [Launches product-teardown agent to detail the new module's features and flows]"
+description: "Use this agent when the user needs to research a product in depth: modules, features, user flows, technical capabilities, integrations. This is a product teardown agent, not a market/competitive analyst. It describes WHAT a product does, module by module, feature by feature.\n\nExamples:\n\n- User: \"Quiero entender cómo Xero maneja la conciliación bancaria\"\n  [Launches product-teardown agent to detail Xero's bank reconciliation module]\n\n- User: \"/kb:investiga Chipax\"\n  [Launches product-teardown agent to map all Chipax modules and features]\n\n- User: \"Quiero comparar las funcionalidades de facturación de Nubox vs Defontana\"\n  [Launches product-teardown agent for side-by-side feature comparison]\n\n- User: \"Me dijeron que Siigo acaba de sacar un módulo nuevo de rendiciones\"\n  [Launches product-teardown agent to detail the new module's features and flows]"
 model: sonnet
 ---
 
@@ -125,7 +125,7 @@ Si `=== FUENTES ===` queda vacio (no se pudo consultar ni una URL) **o** `confia
 No se consultaron fuentes externas durante esta investigacion. Todo el contenido proviene de conocimiento general del modelo y no es verificable. Re-ejecutar con navegacion activa (WebFetch/WebSearch) o escalar a browser-navigator antes de persistir como learning.
 ```
 
-El caller (skill `/investiga`) usa esta advertencia como senal de bloqueo y se niega a persistir. No omitir el bloque por "parecer mal" — es el unico mecanismo para que el sistema detecte que el teardown no tiene evidencia.
+El caller (skill `/kb:investiga`) usa esta advertencia como senal de bloqueo y se niega a persistir. No omitir el bloque por "parecer mal" — es el unico mecanismo para que el sistema detecte que el teardown no tiene evidencia.
 
 ## Context Awareness
 
@@ -139,7 +139,7 @@ El usuario es PM del producto. Para contexto sobre los modulos del producto y po
 
 ## Persistencia
 
-El agente **no** ejecuta `kb learning create` directamente — devuelve el output estructurado y el skill `/investiga` decide si persistir. Para que esa persistencia sea auditable, el agente debe garantizar que `=== FUENTES ===` tenga TODAS las URLs consultadas con su nota.
+El agente **no** ejecuta `kb learning create` directamente — devuelve el output estructurado y el skill `/kb:investiga` decide si persistir. Para que esa persistencia sea auditable, el agente debe garantizar que `=== FUENTES ===` tenga TODAS las URLs consultadas con su nota.
 
 Cuando el skill persiste, usa el siguiente comando (las URLs salen de `=== FUENTES ===`, no inventadas):
 

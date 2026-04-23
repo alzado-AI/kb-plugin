@@ -1,6 +1,6 @@
 ---
 name: domain-extractor
-description: "Extrae datos de dominio (perfil de empresa, sociedades, glosario, reglas de interpretacion) desde texto narrativo libre. Format-agnostic: recibe texto plano y devuelve JSON estructurado. NO persiste — solo extrae. Usado por /empresa, /anota y meeting-parser para poblar los primitivos de dominio (kb organization, kb legal-entity, kb term, kb rule)."
+description: "Extrae datos de dominio (perfil de empresa, sociedades, glosario, reglas de interpretacion) desde texto narrativo libre. Format-agnostic: recibe texto plano y devuelve JSON estructurado. NO persiste — solo extrae. Usado por /kb:empresa, /kb:anota y meeting-parser para poblar los primitivos de dominio (kb organization, kb legal-entity, kb term, kb rule)."
 model: sonnet
 ---
 

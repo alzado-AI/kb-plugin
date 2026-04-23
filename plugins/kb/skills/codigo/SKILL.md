@@ -1,7 +1,7 @@
 ---
 name: codigo
 domain: pm
-description: "Navegar y explorar el codebase del producto (repos GitHub). Responde preguntas sobre features, arquitectura, modelos de datos y flujos. Acepta repo o tema: /codigo invoice-service, /codigo como funciona la conciliacion."
+description: "Navegar y explorar el codebase del producto (repos GitHub). Responde preguntas sobre features, arquitectura, modelos de datos y flujos. Acepta repo o tema: /kb:codigo invoice-service, /kb:codigo como funciona la conciliacion."
 disable-model-invocation: false
 ---
 
@@ -13,7 +13,7 @@ El usuario quiere explorar o entender algo del codebase del producto. La organiz
 
 Usa el agente `codebase-navigator` (Agent tool, subagent_type="codebase-navigator") para realizar la exploracion.
 
-Si el usuario incluyo el tema junto al comando (ej: `/codigo invoice-service`, `/codigo como funciona la conciliacion bancaria`, `/codigo quiero replicar el modelo de facturas`), lanza el agente directamente con $ARGUMENTS como query de exploracion.
+Si el usuario incluyo el tema junto al comando (ej: `/kb:codigo invoice-service`, `/kb:codigo como funciona la conciliacion bancaria`, `/kb:codigo quiero replicar el modelo de facturas`), lanza el agente directamente con $ARGUMENTS como query de exploracion.
 
 Si no incluyo detalle, pregunta brevemente que quiere explorar del codebase.
 
@@ -58,5 +58,5 @@ Reglas de formateo:
 
 Segun el contexto de la pregunta:
 - **Exploracion general**: Pregunta al usuario si quiere persistir los hallazgos en la base de conocimiento. Si dice que si, usa `"$KB_CLI" learning create` directamente.
-- **Para prototipo**: Sugiere usar `/project` (estacion PROTOTIPO) con los datos extraidos. Ejemplo: "Puedo usar `/project` para integrar este modelo de datos en el producto real. Quieres?"
+- **Para prototipo**: Sugiere usar `/kb:project` (estacion PROTOTIPO) con los datos extraidos. Ejemplo: "Puedo usar `/kb:project` para integrar este modelo de datos en el producto real. Quieres?"
 - **Para discovery**: El output ya esta estructurado para integrarse al documento de discovery. No preguntar si guardar — el facilitador de discovery se encarga de la persistencia.

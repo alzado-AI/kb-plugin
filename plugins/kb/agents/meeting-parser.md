@@ -58,7 +58,7 @@ Leer el texto sin asumir formato. Extraer:
 - **Candidatos de glosario** (`terms_candidatos[]`): definiciones explicitas mencionadas en la reunion ("X es Y", "X significa Y", "la sigla X", sigla seguida de explicacion en parentesis). Extraer `{term, definicion_sugerida, source_excerpt}`.
 - **Candidatos de reglas** (`rules_candidatos[]`): reglas de interpretacion mencionadas ("si X entonces Y", "siempre hay que X", "nunca Y", "excluir Z", "lo importante es"). Extraer `{name, condicion_sugerida, accion_sugerida, source_excerpt}`.
 
-Ambos arrays NO se persisten desde meeting-parser — solo se reportan. El caller (meeting-persister, /anota) decide si delegar a `domain-extractor` para extraccion estructurada o ignorar.
+Ambos arrays NO se persisten desde meeting-parser — solo se reportan. El caller (meeting-persister, /kb:anota) decide si delegar a `domain-extractor` para extraccion estructurada o ignorar.
 
 **Docs multi-sesion** (reunion recurrente con historial): identificar bloques por fecha. Extraer datos de CADA sesion como meeting separado.
 
