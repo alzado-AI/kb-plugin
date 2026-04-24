@@ -19,7 +19,7 @@ Todos los agentes que usan providers externos siguen este protocolo al iniciar.
 
 ## Auto-registro de archivos descargados
 
-Cuando un wrapper de provider descarga un archivo a disco (ej. `kb google drive download`, `kb google drive export`, `kb google gmail download-attachment`), DEBE invocar `kb doc upload` automaticamente para registrarlo como Document interno. El comando auto-linkea el doc a la sesion activa de Claude via `document_session_links` — NO pasar `--parent-type workshop_session` (esa taxonomia se elimino; session es ahora un link aparte, no un parent). El wrapper inyecta `kb_doc_id` y `kb_doc_view_url` en su output JSON para que el agente que lo llamo pueda compartir el link inmediatamente.
+Cuando un wrapper de provider descarga un archivo a disco (ej. `kb google drive download`, `kb google drive export`, `kb google gmail download-attachment`), DEBE invocar `kb doc upload` automaticamente para registrarlo como Document interno. El wrapper inyecta `kb_doc_id` y `kb_doc_view_url` en su output JSON para que el agente que lo llamo pueda compartir el link inmediatamente.
 
 **Reglas:**
 - Trigger: `CLAUDE_SESSION_ID` esta en el env (i.e. corre dentro de un workshop)

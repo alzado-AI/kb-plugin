@@ -55,21 +55,16 @@ def _resolve_active_session_id() -> str:
 
 
 def _resolve_session_input(raw: Optional[str]) -> str:
-    """Resolve a user-provided session id to a claude_session_id string.
+    """Resolve a user-provided session id to a workspace identifier string.
 
-    The workshop file panel filters docs by ``DocumentSessionLink.session_id``,
-    which is the Claude transcript ID (``Conversation.claude_session_id``), NOT
-    the workspace UUID (``Conversation.uuid``) that appears in the panel URL.
-    Users only see the workspace UUID in the URL — so this helper lets them
-    paste either form transparently:
+    ``DocumentSessionLink`` and ``Conversation.claude_session_id`` were
+    removed with the runner (the workshop file panel they fed is gone).
+    This helper is kept so pre-existing callers keep working, now just
+    normalising the input:
 
     - ``"active"`` → current auto-resolved session (file/env).
-    - workspace UUID → looked up via ``/conversations?uuid=`` and translated
-      to its current ``claude_session_id``.
-    - anything else (or lookup miss) → returned as-is (assumed already a
-      claude_session_id, or the caller knows what they're doing).
-
-    Empty/None → ``""``.
+    - anything else → returned as-is (workspace UUID or opaque token).
+    - empty/None → ``""``.
     """
     if not raw:
         return ""
@@ -78,17 +73,6 @@ def _resolve_session_input(raw: Optional[str]) -> str:
         return ""
     if raw == "active":
         return _resolve_active_session_id()
-    client = get_client()
-    if not client:
-        return raw
-    try:
-        results = client.list("conversations", uuid=raw)
-        if results and isinstance(results, list):
-            csid = (results[0] or {}).get("claude_session_id") or ""
-            if csid:
-                return csid
-    except Exception:
-        pass
     return raw
 
 
@@ -221,11 +205,9 @@ def register_document(
     ),
     session_id: Optional[str] = typer.Option(
         None, "--session-id",
-        help="Override the auto-resolved session. Accepts either the workspace "
-             "UUID (copied from the workshop URL `?session=`) or the Claude "
-             "session ID directly — the CLI translates workspace UUID to the "
-             "current claude_session_id automatically. Mutually exclusive with "
-             "--no-session.",
+        help="Backward-compat flag. Session linking was removed with the "
+             "workshop file panel; this value is accepted but no longer "
+             "persisted. Mutually exclusive with --no-session.",
     ),
     gdoc_id: Optional[str] = typer.Option(None, "--doc-id", help="Google Doc ID"),
     version: int = typer.Option(1, "--version", "-v"),
@@ -267,25 +249,9 @@ def register_document(
         source_template=source_template,
     )
 
-    # Session link — context of appearance, not parent.
-    # Always attempt to link even when the doc already existed so that a
-    # repeated `kb doc register` in a new session still shows up in the
-    # workshop file panel.
-    if not no_session and isinstance(data, dict) and data.get("id"):
-        active = (
-            _resolve_session_input(session_id)
-            if session_id
-            else _resolve_active_session_id()
-        )
-        if active:
-            try:
-                client.action(
-                    "documents", data["id"], "link-session",
-                    method="post", session_id=active,
-                )
-                data["session_id"] = active
-            except Exception:
-                pass
+    # NOTE: session-link POST was removed with DocumentSessionLink. The
+    # --session-id / --no-session flags are kept for backward-compat of
+    # call sites but are effectively no-ops now.
 
     emit(data)
 
@@ -494,49 +460,7 @@ def delete_document(
     emit(result)
 
 
-@app.command("link-session")
-def link_session_cmd(
-    doc_id: int = typer.Argument(..., help="Document ID"),
-    session_id: str = typer.Argument(
-        ...,
-        help="Session to link. Accepts workspace UUID (from the workshop URL "
-             "`?session=`), Claude session ID directly, or 'active' for the "
-             "currently auto-resolved session.",
-    ),
-):
-    """Link an existing document to a Claude session (idempotent).
-
-    Workspace UUID is translated to its current claude_session_id
-    automatically. Useful to repair docs invisible in the panel because the
-    CLI auto-resolver picked a stale session id.
-    """
-    client = _require_client()
-    sid = _resolve_session_input(session_id)
-    if not sid:
-        typer.echo("Could not resolve session id.", err=True)
-        raise typer.Exit(1)
-    data = client.action(
-        "documents", doc_id, "link-session", method="post", session_id=sid,
-    )
-    emit(data)
-
-
-@app.command("unlink-session")
-def unlink_session_cmd(
-    doc_id: int = typer.Argument(..., help="Document ID"),
-    session_id: str = typer.Argument(
-        ...,
-        help="Session to unlink. Accepts workspace UUID, Claude session ID, "
-             "or 'active'.",
-    ),
-):
-    """Remove the link between a document and a Claude session (idempotent)."""
-    client = _require_client()
-    sid = _resolve_session_input(session_id)
-    if not sid:
-        typer.echo("Could not resolve session id.", err=True)
-        raise typer.Exit(1)
-    data = client.action(
-        "documents", doc_id, "unlink-session", method="post", session_id=sid,
-    )
-    emit(data)
+# NOTE: `link-session` and `unlink-session` subcommands were removed along
+# with DocumentSessionLink. The backend actions (/api/v1/documents/<id>/link-session/)
+# no longer exist. If you need to re-parent a document use `kb doc update`
+# with `--parent-type` / `--parent-id`.

@@ -1,15 +1,11 @@
-"""kb browser — drive the per-session Playwright browser (runner-owned).
+"""kb browser — drive the per-session Playwright browser.
 
 Deliberate asymmetry: every other ``kb <provider>`` subcommand routes
 through ``POST /api/v1/providers/call/``. Browser bypasses the backend
-because the Chromium process is owned by ``runner/browser-agent.ts`` on
-the user's own machine — streaming and input forwarding already flow
-directly from runner to the workshop UI via ``platform/ws-server.ts``.
-Inserting Django would add pure serialization overhead with no
-credential-security benefit (browser has no external API credential to
-protect).
-
-Behaviour mirrors the previous Node CLI at ``tools/browser/browser``.
+because the Chromium process is owned by the local browser agent on
+the user's own machine. Inserting Django would add pure serialization
+overhead with no credential-security benefit (browser has no external
+API credential to protect).
 """
 
 from __future__ import annotations

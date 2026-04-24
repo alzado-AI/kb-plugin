@@ -15,7 +15,7 @@ Si el usuario pasa una **URL del doc** (no un slug ni doc_id), la primera accion
 "$KB_CLI" doc register "<nombre-inferido>" "<url>" --tipo <tipo>
 ```
 
-(Auto-linkea a la sesion activa via `document_session_links`, sin pisar el parent canonico. Si el doc ya esta en KB, saltar.)
+(Si el doc ya esta en KB, saltar.)
 
 ## Fase 1 — Identificar documento
 

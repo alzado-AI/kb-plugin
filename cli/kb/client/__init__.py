@@ -73,7 +73,7 @@ def get_client() -> Optional["KBClient"]:
 def _load_token() -> _LoadedToken:
     """Load auth token + its origin. Priority:
 
-    1. KB_ACCESS_TOKEN env var (injected by ws-server for browser sessions)
+    1. KB_ACCESS_TOKEN env var (injected by the session runner for browser sessions)
     2. KB_SERVICE_KEY env var (service mode, admin access)
     3. access_token from the active context's session file
     4. access_token from ~/.kb/session.json (pre-multi-tenant fallback)
